@@ -34,7 +34,7 @@ public class ProductController {
         return product;
     }
 
-    @GetMapping(value = "/posts")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Product> getAllProducts() {
         return productDao.getAllProducts();
