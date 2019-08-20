@@ -1,0 +1,211 @@
+
+Capstone2 Planning
+
+
+
+Admin-Service, port 8282
+
+ * Service for: Customer, Products, Inventory, Orders, Level Up.
+
+ - View DTOs ( can extend the regular DTOs, just add validations )
+
+    * Customer-Service
+        - CustomerRequestView ( extends Customer )
+            customerId (with validations)
+            firstName
+            lastName
+            street
+            city
+            zip
+            email
+            phone
+
+        - CustomerResponseView
+            List<Customer>
+
+
+    * Product-Service
+        - ProductRequestView ( extends Product )
+            productId (with validations)
+            productName
+            productDescription
+            listPrice
+            unitCost
+
+        - ProductResponseView
+            List<Product>
+
+
+    * Inventory-Service
+        - InventoryRequestView ( extends Inventory )
+            inventoryId (with validations)
+            productId
+            quantity
+
+        - InventoryResponseView
+            List<Inventory>
+
+
+    * Order-Service ( this may include both invoice and invoice_item models )
+        - must have an invoiceId to create a new invoiceItem 
+
+        - InvoiceRequestView 
+            Invoice
+            InvoiceItem 
+
+
+
+        - InvoiceResponseView
+            (return a List<TotalOrder>, but we need a single one to populate to return )
+                TotalOrder 
+                    Invoice     
+                    List<InvoiceItem> 
+
+
+    * LevelUp-Service
+        - LevelUpRequestView ( extends LevelUp)
+            levelUpId
+            customerId
+            points
+            memberDate
+
+        - LevelUpResponseView
+            List<LevelUp>
+
+
+//--------------------------------------------  
+
+Retail-Service, port 8181
+
+* Service for: searching inventory ( GET to Invenory-Service ), creating order ( POST to Order-Service )
+
+
+    - View DTOs 
+
+        * SearchRequestView
+            ( return all products in stock or not )
+
+            * dont need a viewModel here
+            * either pass in the productId in the uri or not 
+
+
+        * SearchResponseView
+            ( need to create a Product Class first )
+
+            List<Product>
+
+
+        * OrderRequestView
+
+            ( need to create a Customer )
+
+            Customer customer 
+            productId
+            quantity
+
+
+
+
+        * OrderResponseView 
+            ( need to make an invoice DTO for each order)
+
+                TempInvoiceItem ( with product populated, list of these added to SingleInvoice DTO )
+
+                    invoiceItemId
+                    invoiceId (populate this from Inventory-Service)
+                        productId ( populate this from product ) 
+                            productName 
+                            productDescription 
+                            listPrice 
+                    quantity 
+                    productTotalPrice ( quantity * listPrice )
+                ----------------- 
+ 
+                SingleInvoice (DTO) ( contains all invoiceItems and adds the total, applies level up service )
+
+                    Invoice invoice
+                    List<TempInvoiceItem>
+
+                    orderTotalPrice ( add up all TempInvoiceItems.get productTotalPrice )
+                    levelUpPoints ( level up logic will be done in the service layer )
+                ----------------------  
+
+
+
+            ** this is the DTO to return **
+
+                Customer customer
+                List<SingleInvoice>
+            
+
+
+
+
+
+
+
+
+
+// ---- how are invoice and inventory related 
+
+invoice 
+    customer_id
+    purchase_date
+
+invoice_item 
+    invoice_id (fk)
+    invenory_id (fk)
+    quantity ( How many of each product are ordered )
+    unit_price ( list_price )
+
+inventory 
+    product_id (fk)
+    quantity ( How many are actually in stock )
+
+product 
+    product_name 
+    product_description
+    list_price (what is this? )
+    unit_cost ( what is this? )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
