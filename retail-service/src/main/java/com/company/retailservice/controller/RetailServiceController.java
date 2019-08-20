@@ -1,5 +1,6 @@
 package com.company.retailservice.controller;
 
+import com.company.retailservice.dto.SearchResponseView;
 import com.company.retailservice.service.RetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ public class RetailServiceController {
 
     @RequestMapping(value = "/retail/products", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseOrder getAllProducts() {
-        return service.determineItemType(requestOrder);
+    public SearchResponseView getAllProducts() {
+        return service.getAllProducts();
     }
 }
