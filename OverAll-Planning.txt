@@ -98,10 +98,13 @@ Retail-Service, port 8181
         * OrderRequestView
 
             ( need to create a Customer )
+            ItemInput 
+                productId
+                quantity 
 
             Customer customer 
             productId
-            quantity
+            List<ItemInput>
 
 
 
@@ -123,7 +126,8 @@ Retail-Service, port 8181
  
                 SingleInvoice (DTO) ( contains all invoiceItems and adds the total, applies level up service )
 
-                    Invoice invoice
+                    invoiceId 
+
                     List<TempInvoiceItem>
 
                     orderTotalPrice ( add up all TempInvoiceItems.get productTotalPrice )
@@ -169,6 +173,10 @@ product
     unit_cost ( what is this? )
 
 
+
+//---------------------------- 
+
+How to create a new order 
 
 
 

@@ -3,15 +3,14 @@ package com.company.retailservice.dto;
 import java.util.List;
 import java.util.Objects;
 
-public class OrderRequestView {
+public class OrderResponseView {
 
 
     private Customer customer;
-    private List<InputItem> products;
+    private SingleInvoice order;
 
 
     // getters / setters
-
     public Customer getCustomer() {
         return customer;
     }
@@ -20,39 +19,37 @@ public class OrderRequestView {
         this.customer = customer;
     }
 
-    public List<InputItem> getProducts() {
-        return products;
+    public SingleInvoice getOrder() {
+        return order;
     }
 
-    public void setProducts(List<InputItem> products) {
-        this.products = products;
+    public void setOrder(SingleInvoice order) {
+        this.order = order;
     }
-
-
-    // equals / hash
+// equals / hash
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderRequestView that = (OrderRequestView) o;
+        OrderResponseView that = (OrderResponseView) o;
         return customer.equals(that.customer) &&
-                products.equals(that.products);
+                order.equals(that.order);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(customer, products);
+        return Objects.hash(customer, order);
     }
 
 
-    // to string
+    // to String
 
     @Override
     public String toString() {
-        return "OrderRequestView{" +
+        return "OrderResponseView{" +
                 "customer=" + customer +
-                ", products=" + products +
+                ", order=" + order +
                 '}';
     }
 }
