@@ -3,6 +3,7 @@ package com.company.productservice.controller;
 import com.company.productservice.dao.ProductDao;
 import com.company.productservice.exception.NotFoundException;
 import com.company.productservice.model.Product;
+import com.company.productservice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
@@ -15,17 +16,17 @@ import java.util.List;
 @RefreshScope
 public class ProductController {
     @Autowired
-    ProductDao productDao;
+    ProductService service;
 
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
-        Product product1 = productDao.addProduct(product);
+        Product product1 = service.saveProduct(product);
         return product1;
     }
 
     @GetMapping(value = "/id/{id}")
     public Product getProduct(@PathVariable int id) {
-        Product product = productDao.getProduct(id);
+        Product product = service.getProduct(id);
 
         if (product == null) {
             throw new NotFoundException("Product could not be retrieved for id " + id);
@@ -37,7 +38,7 @@ public class ProductController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Product> getAllProducts() {
-        return productDao.getAllProducts();
+        return service.getAllProducts();
     }
 
     @PutMapping(value = "/products/id/{id}")
@@ -46,12 +47,12 @@ public class ProductController {
             throw new IllegalArgumentException("Product ID on path must match the ID in the product object");
         }
 
-        productDao.updateProduct(product);
+        service.updateProduct(product);
     }
 
     @DeleteMapping(value = "/{id}")
     public void deleteProduct(@PathVariable(name = "id") int id) {
-        productDao.deleteProduct(id);
+        service.removeProduct(id);
     }
 
 }
