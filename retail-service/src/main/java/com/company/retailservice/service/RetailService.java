@@ -37,6 +37,12 @@ public class RetailService {
         return productServiceClient.getProductById(id);
     }
 
+    public List<Product> getAllProducts() {
+
+        return productServiceClient.getAllProducts();
+    }
+
+
     public OrderResponseView createOrder(OrderRequestView orderRequestView) {
 
         // ******* may need to add the product listPrice in the request view  *********
@@ -101,6 +107,9 @@ public class RetailService {
         return returnView;
 
     }
+
+
+
 
 
     // Helper Methods

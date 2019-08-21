@@ -1,20 +1,17 @@
-package com.company.retailservice.dto;
+package com.company.adminservice.dto;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class TempInvoiceItem {
+public class InvoiceItem {
 
 
     private int invoiceItemId;
     private int invoiceId;
-
-    private Product product;
-
+    private int inventoryId;
     private int quantity;
-//    private int quantityInStock;
-    private BigDecimal productTotalPrice;
 
+    private BigDecimal unitPrice;
 
     // getters / setters
 
@@ -34,14 +31,6 @@ public class TempInvoiceItem {
         this.invoiceId = invoiceId;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public int getQuantity() {
         return quantity;
     }
@@ -50,39 +39,39 @@ public class TempInvoiceItem {
         this.quantity = quantity;
     }
 
-    public BigDecimal getProductTotalPrice() {
-        return productTotalPrice;
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setProductTotalPrice(BigDecimal productTotalPrice) {
-        this.productTotalPrice = productTotalPrice;
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
-    // changed this method to calculate the total
-
-    public void setProductTotalPrice() {
-
-        this.productTotalPrice =   this.product.getListPrice().multiply(new BigDecimal(this.quantity));
+    public int getInventoryId() {
+        return inventoryId;
     }
 
+    public void setInventoryId(int inventoryId) {
+        this.inventoryId = inventoryId;
+    }
 
-    // equals / hash
+// equals / hash
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TempInvoiceItem that = (TempInvoiceItem) o;
+        InvoiceItem that = (InvoiceItem) o;
         return invoiceItemId == that.invoiceItemId &&
                 invoiceId == that.invoiceId &&
+                inventoryId == that.inventoryId &&
                 quantity == that.quantity &&
-                product.equals(that.product) &&
-                productTotalPrice.equals(that.productTotalPrice);
+                unitPrice.equals(that.unitPrice);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(invoiceItemId, invoiceId, product, quantity, productTotalPrice);
+        return Objects.hash(invoiceItemId, invoiceId, inventoryId, quantity, unitPrice);
     }
 
 
@@ -91,12 +80,12 @@ public class TempInvoiceItem {
 
     @Override
     public String toString() {
-        return "TempInvoiceItem{" +
+        return "InvoiceItem{" +
                 "invoiceItemId=" + invoiceItemId +
                 ", invoiceId=" + invoiceId +
-                ", product=" + product +
+                ", inventoryId=" + inventoryId +
                 ", quantity=" + quantity +
-                ", productTotalPrice=" + productTotalPrice +
+                ", unitPrice=" + unitPrice +
                 '}';
     }
 }
