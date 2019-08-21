@@ -2,16 +2,22 @@ package com.company.retailservice.dto;
 
 import java.util.Objects;
 
-public class InputItem {
+public class Inventory {
 
-  //  private Product product;
-  private int productId;
+
+    private int inventoryId;
+    private int productId;
     private int quantity;
-
-
 
     // getters / setters
 
+    public int getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(int inventoryId) {
+        this.inventoryId = inventoryId;
+    }
 
     public int getProductId() {
         return productId;
@@ -36,14 +42,15 @@ public class InputItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InputItem inputItem = (InputItem) o;
-        return productId == inputItem.productId &&
-                quantity == inputItem.quantity;
+        Inventory inventory = (Inventory) o;
+        return inventoryId == inventory.inventoryId &&
+                productId == inventory.productId &&
+                quantity == inventory.quantity;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, quantity);
+        return Objects.hash(inventoryId, productId, quantity);
     }
 
 
@@ -52,8 +59,9 @@ public class InputItem {
 
     @Override
     public String toString() {
-        return "InputItem{" +
-                "productId=" + productId +
+        return "Inventory{" +
+                "inventoryId=" + inventoryId +
+                ", productId=" + productId +
                 ", quantity=" + quantity +
                 '}';
     }

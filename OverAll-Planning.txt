@@ -178,11 +178,84 @@ product
 
 How to create a new order 
 
+* Check the list of products to order to see if they are in stock
+    - create a new list of items that are in stock.
+
+    tempInvoiceItem object
+        - Product product
+        - int quantity
+        - int quantityInstock
+
+
+* create Customer object  ( new or existing) 
+
+* -- create invoiceId and InvoiceItemId's 
+
+    * send data to Invoice-service 
+        - dto for invoice-service
+
+            Invoice 
+                - customerId
+                - purchase date 
+
+                List of:
+                    - inventoryId
+                    - quantity
+                    - unitPrice
+    * from Invoice-service 
+            
+            Invoice 
+                - invoiceId 
+                - customerId
+                - purchase date 
+
+                List of:
+                    - invoiceItemId 
+                    - inventoryId
+                    - quantity
+                    - unitPrice
+
+* -- End of Invoice-Service 
+
+for each invoice 
+    find the total for each product (use TempInvoiceItem)
+
+create a Total Price Method()
+
+    public BigDecimal totalOrderPrice(InvoiceView invoiceView) {
+
+        BigDecimal cost;
+
+        for( InvoiceItem each: invoiceView.getInvoiceItemList() ) {
+
+            cost += each.getQuantity() * each.getUnitPrice();
+
+        }
+
+        return cost;
+
+    }
+
+
+    * Add data to the SingleInvoice object
+
+
+    * -- method to add Level-Up Service to SingleInvoice object
+
+
+    * Add SingleInvoice object to the responseView object 
 
 
 
 
 
+--------------------------------  
+quantity 
+
+productId 
+
+Inventory 
+    quantityInStock 
 
 
 

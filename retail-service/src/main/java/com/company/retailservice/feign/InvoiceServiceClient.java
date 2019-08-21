@@ -1,22 +1,24 @@
 package com.company.retailservice.feign;
 
 import com.company.retailservice.dto.Invoice;
-import com.company.retailservice.dto.InvoiceItem;
+import com.company.retailservice.dto.InvoiceViewModel;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
-
-@FeignClient(name = "inventory-service")
+@FeignClient(name = "invoice-service")
 public interface InvoiceServiceClient {
 
+    @RequestMapping(value = "/invoices", method = RequestMethod.POST)
+    public InvoiceViewModel createInvoice(@RequestBody InvoiceViewModel invoiceViewModel);
 
-    @RequestMapping(value = "/inventorys", method = RequestMethod.GET)
-    public List<Invoice> getAllInvoices();
 
-    @RequestMapping(value = "/InvoiceItems", method = RequestMethod.GET)
-    public List<InvoiceItem> getAllInvoiceItemss();
+//    @RequestMapping(value = "/invoices/id/{id}", method = RequestMethod.GET)
+//    public InvoiceViewModel getInvoiceById(@PathVariable int id);
+
+//    @RequestMapping(value = "/InvoiceItems", method = RequestMethod.GET)
+//    public List<InvoiceItem> getAllInvoiceItemss();
 
 
 }

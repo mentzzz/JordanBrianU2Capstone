@@ -13,11 +13,11 @@ public interface ProductServiceClient {
 
 
 
-    @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public List<Product> getAllProducts();
+//    @RequestMapping(value = "/products", method = RequestMethod.GET)
+//    public List<Product> getAllProducts();
 
-//    @RequestMapping(value = "/comments/{id}", method = RequestMethod.GET)
-//    public Comment getCommentById(@PathVariable int id);
+    @RequestMapping(value = "/products/id/{id}", method = RequestMethod.GET)
+    public Product getProductById(@PathVariable int id);
 
 
 }

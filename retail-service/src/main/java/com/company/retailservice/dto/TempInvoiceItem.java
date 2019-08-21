@@ -12,6 +12,7 @@ public class TempInvoiceItem {
     private Product product;
 
     private int quantity;
+//    private int quantityInStock;
     private BigDecimal productTotalPrice;
 
 
@@ -53,6 +54,18 @@ public class TempInvoiceItem {
         return productTotalPrice;
     }
 
+//    public int getQuantityInStock() {
+//        return quantityInStock;
+//    }
+//
+//    public void setQuantityInStock(int quantityInStock) {
+//        this.quantityInStock = quantityInStock;
+//    }
+
+    public void setProductTotalPrice(BigDecimal productTotalPrice) {
+        this.productTotalPrice = productTotalPrice;
+    }
+
     // changed this method to calculate the total
 
     public void setProductTotalPrice() {
@@ -90,6 +103,7 @@ public class TempInvoiceItem {
                 ", invoiceId=" + invoiceId +
                 ", product=" + product +
                 ", quantity=" + quantity +
+
                 ", productTotalPrice=" + productTotalPrice +
                 '}';
     }
