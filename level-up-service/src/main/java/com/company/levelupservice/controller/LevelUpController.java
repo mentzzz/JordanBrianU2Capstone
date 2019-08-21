@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/levelup")
 @RefreshScope
 public class LevelUpController {
-    
+
     @Autowired
     LevelUpService service;
 
