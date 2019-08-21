@@ -10,6 +10,7 @@ public class InvoiceItem {
     private int invoiceId;
     private int inventoryId;
     private int quantity;
+
     private BigDecimal unitPrice;
 
     // getters / setters
