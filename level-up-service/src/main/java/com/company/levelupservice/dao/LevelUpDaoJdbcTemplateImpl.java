@@ -32,6 +32,9 @@ public class LevelUpDaoJdbcTemplateImpl implements LevelUpDao {
     private static final String DELETE_LEVEL_UP =
             "delete from level_up where level_up_id = ?";
 
+    private static final String SELECT_LEVEL_UP_BY_CUSTOMER =
+            "select * from level_up where customer_id =? ";
+
     @Autowired
     public LevelUpDaoJdbcTemplateImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -80,6 +83,16 @@ public class LevelUpDaoJdbcTemplateImpl implements LevelUpDao {
     @Override
     public void deleteLevelUp(int id) {
         jdbcTemplate.update(DELETE_LEVEL_UP, id);
+    }
+
+    @Override
+    public LevelUp getLevelUpByCustomerId(int customerId) {
+        try {
+            return jdbcTemplate.queryForObject(SELECT_LEVEL_UP_BY_CUSTOMER, this::mapRowToLevelUp, customerId);
+        }catch (EmptyResultDataAccessException e) {
+            // if there is no match for this invoice id, return null
+            return null;
+        }
     }
 
     private LevelUp mapRowToLevelUp(ResultSet rs, int rowNum) throws SQLException {

@@ -79,7 +79,6 @@ public class ProductDaoJdbcTemplateImpl implements ProductDao {
     @Override
     public void deleteProduct(int id) {
         jdbcTemplate.update(DELETE_PRODUCT, id);
-
     }
 
     private Product mapRowToProduct(ResultSet rs, int rowNum) throws SQLException {
