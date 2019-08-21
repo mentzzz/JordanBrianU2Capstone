@@ -14,4 +14,6 @@ public interface LevelUpDao {
     void updateLevelUp(LevelUp levelUp);
 
     void deleteLevelUp(int id);
+
+    LevelUp getLevelUpByCustomerId(int customerId);
 }
