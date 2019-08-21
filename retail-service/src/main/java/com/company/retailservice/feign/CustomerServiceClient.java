@@ -2,6 +2,8 @@ package com.company.retailservice.feign;
 
 import com.company.retailservice.dto.Customer;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -10,10 +12,13 @@ import java.util.List;
 @FeignClient(name = "customer-service")
 public interface CustomerServiceClient {
 
-    @RequestMapping(value = "/customers", method = RequestMethod.GET)
-    public List<Customer> getAllCustomers();
+    @RequestMapping(value = "/customers", method = RequestMethod.POST)
+    public Customer createCustomer(@RequestBody Customer customer);
 
+//    @RequestMapping(value = "/customers", method = RequestMethod.GET)
+//    public List<Customer> getAllCustomers();
 
-
+    @RequestMapping(value = "/customers/id/{id}", method = RequestMethod.GET)
+    public Customer getCustomerById(@PathVariable int id);
 
 }

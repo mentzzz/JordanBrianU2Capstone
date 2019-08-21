@@ -8,6 +8,7 @@ public class InvoiceItem {
 
     private int invoiceItemId;
     private int invoiceId;
+    private int inventoryId;
     private int quantity;
     private BigDecimal unitPrice;
 
@@ -45,8 +46,15 @@ public class InvoiceItem {
         this.unitPrice = unitPrice;
     }
 
+    public int getInventoryId() {
+        return inventoryId;
+    }
 
-    // equals / hash
+    public void setInventoryId(int inventoryId) {
+        this.inventoryId = inventoryId;
+    }
+
+// equals / hash
 
     @Override
     public boolean equals(Object o) {
@@ -55,13 +63,14 @@ public class InvoiceItem {
         InvoiceItem that = (InvoiceItem) o;
         return invoiceItemId == that.invoiceItemId &&
                 invoiceId == that.invoiceId &&
+                inventoryId == that.inventoryId &&
                 quantity == that.quantity &&
                 unitPrice.equals(that.unitPrice);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(invoiceItemId, invoiceId, quantity, unitPrice);
+        return Objects.hash(invoiceItemId, invoiceId, inventoryId, quantity, unitPrice);
     }
 
 
@@ -73,6 +82,7 @@ public class InvoiceItem {
         return "InvoiceItem{" +
                 "invoiceItemId=" + invoiceItemId +
                 ", invoiceId=" + invoiceId +
+                ", inventoryId=" + inventoryId +
                 ", quantity=" + quantity +
                 ", unitPrice=" + unitPrice +
                 '}';

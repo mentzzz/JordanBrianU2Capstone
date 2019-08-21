@@ -2,6 +2,7 @@ package com.company.retailservice.controller;
 
 import com.company.retailservice.dto.OrderRequestView;
 import com.company.retailservice.dto.OrderResponseView;
+import com.company.retailservice.dto.Product;
 import com.company.retailservice.dto.SearchResponseView;
 import com.company.retailservice.service.RetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,11 @@ public class RetailServiceController {
 
     // Retail-Service Controller Route Methods:
 
-    @RequestMapping(value = "/retail/products", method = RequestMethod.GET)
+    // *** Test route only ***
+    @RequestMapping(value = "/retail/product/{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public SearchResponseView getAllProducts() {
-        return service.getAllProducts();
+    public Product getAllProducts(@PathVariable int id) {
+        return service.getByProductId(id);
     }
 
 

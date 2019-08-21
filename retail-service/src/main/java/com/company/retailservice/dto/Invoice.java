@@ -1,5 +1,6 @@
 package com.company.retailservice.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ public class Invoice {
 
     private int invoiceId;
     private int customerId;
-    private Date purchaseDate;
+    private LocalDate purchaseDate;
 
 
     // getters / setters
@@ -29,16 +30,14 @@ public class Invoice {
         this.customerId = customerId;
     }
 
-    public Date getPurchaseDate() {
+    public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
+    public void setPurchaseDate(LocalDate purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
-
-
-    // equals / hash
+// equals / hash
 
     @Override
     public boolean equals(Object o) {
