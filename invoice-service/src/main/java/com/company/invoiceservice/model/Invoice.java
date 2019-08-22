@@ -1,11 +1,16 @@
 package com.company.invoiceservice.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Invoice {
+    @Min(1)
     private int invoiceId;
+    @Min(1)
     private int customerId;
+    @NotNull
     private LocalDate purchaseDate;
 
     public int getInvoiceId() {

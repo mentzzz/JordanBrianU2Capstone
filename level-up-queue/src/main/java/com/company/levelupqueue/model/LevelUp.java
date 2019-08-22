@@ -1,4 +1,4 @@
-package com.company.retailservice.dto;
+package com.company.levelupqueue.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -8,17 +8,6 @@ public class LevelUp {
     private int customerId;
     private int points;
     private LocalDate memberDate;
-
-    public LevelUp() {
-
-    }
-
-    public LevelUp(int id, int customerId, int points, LocalDate memberDate) {
-        this.id = id;
-        this.customerId = customerId;
-        this.points = points;
-        this.memberDate = memberDate;
-    }
 
     public int getId() {
         return id;
@@ -50,16 +39,6 @@ public class LevelUp {
 
     public void setMemberDate(LocalDate memberDate) {
         this.memberDate = memberDate;
-    }
-
-    @Override
-    public String toString() {
-        return "LevelUp{" +
-                "id=" + id +
-                ", customerId=" + customerId +
-                ", points=" + points +
-                ", memberDate=" + memberDate +
-                '}';
     }
 
     @Override

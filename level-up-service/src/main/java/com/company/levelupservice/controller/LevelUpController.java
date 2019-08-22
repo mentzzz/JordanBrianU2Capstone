@@ -56,7 +56,7 @@ public class LevelUpController {
 
     @PutMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateLevelUp(@RequestBody LevelUp levelUp) {
+    public void updateLevelUp(@RequestBody LevelUp levelUp, @PathVariable int id) {
         service.updateLevelUp(levelUp);
         if (levelUp == null)
             throw new NotFoundException("Not found");
