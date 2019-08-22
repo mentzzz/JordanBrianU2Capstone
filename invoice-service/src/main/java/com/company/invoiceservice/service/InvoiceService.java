@@ -15,6 +15,7 @@ import java.util.List;
 
 @Component
 public class InvoiceService {
+
     InvoiceDao invoiceDao;
     InvoiceItemDao invoiceItemDao;
 
@@ -22,6 +23,28 @@ public class InvoiceService {
     public InvoiceService(InvoiceDao invoiceDao, InvoiceItemDao invoiceItemDao) {
         this.invoiceDao = invoiceDao;
         this.invoiceItemDao = invoiceItemDao;
+    }
+
+    @Transactional
+    public InvoiceItem saveInvoiceItem(InvoiceItem invoiceItem) {
+        return invoiceItemDao.addInvoiceItem(invoiceItem);
+    }
+
+    public void updateInvoiceItem(InvoiceItem invoiceItem) {
+        invoiceItemDao.updateInvoiceItem(invoiceItem);
+    }
+
+    public List<InvoiceItem> getAllInvoiceItems() {
+        return invoiceItemDao.getAllInvoiceItems();
+    }
+
+    public InvoiceItem findInvoiceItem(int id) {
+        return invoiceItemDao.getInvoiceItemById(id);
+    }
+
+    public void removeInvoiceItem(int id)
+    {
+        invoiceItemDao.deleteInvoiceItem(id);
     }
 
     @Transactional
