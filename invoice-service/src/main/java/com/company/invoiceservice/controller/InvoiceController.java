@@ -38,7 +38,7 @@ public class InvoiceController {
         return service.getAllInvoices();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/id/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteInvoice(@PathVariable int id) {
         service.removeInvoice(id);
