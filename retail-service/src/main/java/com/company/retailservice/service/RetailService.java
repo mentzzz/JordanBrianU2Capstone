@@ -206,6 +206,7 @@ public class RetailService {
         // send the updated object to the que
 
 
+        //if level up has ID then its update, no level up id is create
 
 
 

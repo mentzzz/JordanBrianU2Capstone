@@ -1,13 +1,20 @@
 package com.company.levelupservice.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public class LevelUp {
+    @Min(1)
     private int id;
+    @Min(1)
     private int customerId;
+    @Min(0)
     private int points;
+    @NotNull
     private LocalDate memberDate;
 
     public int getId() {
