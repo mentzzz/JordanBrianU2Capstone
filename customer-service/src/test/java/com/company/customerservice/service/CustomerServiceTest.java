@@ -72,7 +72,6 @@ public class CustomerServiceTest {
 
         assertEquals(customer, fromService);
         assertEquals(customers.size(), 1);
-
     }
 
 
