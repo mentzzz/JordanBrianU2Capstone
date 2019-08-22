@@ -59,7 +59,7 @@ public class LevelUpServiceTest {
         levelUp = service.saveLevelUp(levelUp);
 
         LevelUp levelUp1 = service.getLevelUp(levelUp.getId());
-        List<LevelUp> levelUpList = dao.getAllLevelUps();
+        List<LevelUp> levelUpList = service.getAllLevelUps();
         assertEquals(levelUpList.size(), 1);
         assertEquals(levelUp1, levelUp);
 
