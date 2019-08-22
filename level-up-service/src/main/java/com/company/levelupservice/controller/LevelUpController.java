@@ -8,6 +8,8 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/levelup")
 @RefreshScope
@@ -22,6 +24,12 @@ public class LevelUpController {
         return service.saveLevelUp(levelUp);
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<LevelUp> getAllLevelUp() {
+        return service.getAllLevelUps();
+    }
+
     @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LevelUp getLevelUp(@PathVariable("id") int id) {
@@ -31,7 +39,7 @@ public class LevelUpController {
         return levelUp;
     }
 
-    @GetMapping("/levelup/customerid/{customerid}")
+    @GetMapping("/customerid/{customerid}")
     @ResponseStatus(HttpStatus.OK)
     public LevelUp getLevelUpByCustomer(@PathVariable("customerid") int customerId) {
         LevelUp levelUp = service.getLevelUpByCustomerId(customerId);
@@ -48,7 +56,7 @@ public class LevelUpController {
 
     @PutMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateLevelUp(@PathVariable("id") LevelUp levelUp) {
+    public void updateLevelUp(@RequestBody LevelUp levelUp) {
         service.updateLevelUp(levelUp);
         if (levelUp == null)
             throw new NotFoundException("Not found");
