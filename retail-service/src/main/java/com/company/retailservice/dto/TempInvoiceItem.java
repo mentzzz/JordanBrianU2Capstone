@@ -54,14 +54,6 @@ public class TempInvoiceItem {
         return productTotalPrice;
     }
 
-//    public int getQuantityInStock() {
-//        return quantityInStock;
-//    }
-//
-//    public void setQuantityInStock(int quantityInStock) {
-//        this.quantityInStock = quantityInStock;
-//    }
-
     public void setProductTotalPrice(BigDecimal productTotalPrice) {
         this.productTotalPrice = productTotalPrice;
     }
@@ -75,6 +67,7 @@ public class TempInvoiceItem {
 
 
     // equals / hash
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -103,7 +96,6 @@ public class TempInvoiceItem {
                 ", invoiceId=" + invoiceId +
                 ", product=" + product +
                 ", quantity=" + quantity +
-
                 ", productTotalPrice=" + productTotalPrice +
                 '}';
     }

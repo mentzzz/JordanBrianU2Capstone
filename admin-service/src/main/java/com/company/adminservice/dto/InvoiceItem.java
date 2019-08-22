@@ -1,4 +1,4 @@
-package com.company.retailservice.dto;
+package com.company.adminservice.dto;
 
 import java.math.BigDecimal;
 import java.util.Objects;

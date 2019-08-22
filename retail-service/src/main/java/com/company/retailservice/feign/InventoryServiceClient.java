@@ -16,12 +16,13 @@ public interface InventoryServiceClient {
 
 
 
-    @RequestMapping(value = "/inventory/{inventory}", method = RequestMethod.GET)
-    public int getQuantity(@PathVariable int inventory);
+//    @RequestMapping(value = "/inventory/{inventory}", method = RequestMethod.GET)
+//    public int getQuantity(@PathVariable int inventory);
 
     @RequestMapping(value = "/inventory/product/{productid}", method = RequestMethod.GET)
     public Inventory getInventoryByProductId(@PathVariable int productid);
 
-
+    @RequestMapping(value = "/inventory/{inventoryId}", method = RequestMethod.GET)
+    public Inventory getInventoryById(@PathVariable int inventoryId);
 
 }

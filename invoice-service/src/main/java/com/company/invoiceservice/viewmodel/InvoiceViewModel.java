@@ -10,6 +10,7 @@ public class InvoiceViewModel extends Invoice {
 
     private List<InvoiceItem> invoiceItems;
 
+
     public List<InvoiceItem> getInvoiceItems() {
         return invoiceItems;
     }
