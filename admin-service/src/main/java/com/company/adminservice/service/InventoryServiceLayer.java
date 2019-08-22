@@ -18,22 +18,19 @@ public class InventoryServiceLayer {
 
     // CREATE INVENTORY
     public Inventory createInventory(Inventory inventory) {
-        inventory = inventoryServiceClient.createInventory(inventory);
-        return inventory;
+        return inventoryServiceClient.createInventory(inventory);
     }
 
 
     // FIND INVENTORY BY ID
     public Inventory findInventory(int id) {
-        Inventory inventory = inventoryServiceClient.getInventoryById(id);
-        return inventory;
+        return inventoryServiceClient.getInventoryById(id);
     }
 
     // FINDALL INVENTORY
     public List<Inventory> findAllInventorys() {
-        List<Inventory> inventory = inventoryServiceClient.getAllInventorys();
-        return inventory;
-    }
+        return inventoryServiceClient.getAllInventorys();
+     }
 
     // UPDATE INVENTORY
     public void updateInventory(int id, Inventory inventory) {
@@ -49,9 +46,8 @@ public class InventoryServiceLayer {
 
     // FIND INVENTORY BY PRODUCT ID
     public Inventory findInventoryByProductId(int id) {
-        Inventory inventory = inventoryServiceClient.getInventoryByProductId(id);
-        return inventory;
-    }
+        return inventoryServiceClient.getInventoryByProductId(id);
+     }
 
 
 
