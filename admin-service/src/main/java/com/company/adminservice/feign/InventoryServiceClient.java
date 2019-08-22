@@ -25,7 +25,7 @@ public interface InventoryServiceClient {
     public void updateInventory(@PathVariable int id, @RequestBody Inventory inventory);
 
     @RequestMapping(value = "/inventory/{id}", method = RequestMethod.DELETE)
-    public void deleteInventory();
+    public void deleteInventory(@PathVariable int id);
 
 
 

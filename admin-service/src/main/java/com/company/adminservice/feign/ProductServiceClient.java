@@ -26,7 +26,7 @@ public interface ProductServiceClient {
     public void updateProduct(@PathVariable int id, @RequestBody Product product);
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
-    public void deleteProduct();
+    public void deleteProduct(@PathVariable int id);
 
 
 

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @FeignClient(name = "customer-service")
 public interface CustomerServiceClient {
 
@@ -14,7 +16,7 @@ public interface CustomerServiceClient {
     public Customer createCustomer(@RequestBody Customer customer);
 
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
-    public Customer getAllCustomers();
+    public List<Customer> getAllCustomers();
 
     @RequestMapping(value = "/customers/id/{id}", method = RequestMethod.GET)
     public Customer getCustomerById(@PathVariable int id);
@@ -23,6 +25,6 @@ public interface CustomerServiceClient {
     public void updateCustomer(@PathVariable int id, @RequestBody Customer customer);
 
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.DELETE)
-    public void deleteCustomer();
+    public void deleteCustomer(@PathVariable int id);
 
 }
