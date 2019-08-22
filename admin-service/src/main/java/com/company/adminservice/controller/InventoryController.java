@@ -19,9 +19,8 @@ public class InventoryController {
     @RequestMapping(value = "/administration/inventory", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public Inventory createInventory(@RequestBody Inventory inventory) {
-        inventory = service.createInventory(inventory);
-        return inventory;
-    }
+        return service.createInventory(inventory);
+     }
 
     @RequestMapping(value = "/administration/inventory", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
@@ -33,8 +32,7 @@ public class InventoryController {
     @RequestMapping(value = "/administration/inventory/{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public Inventory getInventoryById(@PathVariable("id") int id) {
-        Inventory inventory = service.findInventory(id);
-        return inventory;
+        return service.findInventory(id);
     }
 
     @RequestMapping(value = "/administration/inventory/{id}", method = RequestMethod.PUT)

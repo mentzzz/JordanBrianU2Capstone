@@ -18,8 +18,8 @@ public interface InventoryServiceClient {
     @RequestMapping(value = "/inventory", method = RequestMethod.GET)
     public List<Inventory> getAllInventorys();
 
-    @RequestMapping(value = "/inventory/{inventoryId}", method = RequestMethod.GET)
-    public Inventory getInventoryById(@PathVariable int inventoryId);
+    @RequestMapping(value = "/inventory/id/{id}", method = RequestMethod.GET)
+    public Inventory getInventoryById(@PathVariable int id);
 
     @RequestMapping(value = "/inventory/id/{id}", method = RequestMethod.PUT)
     public void updateInventory(@PathVariable int id, @RequestBody Inventory inventory);
