@@ -181,7 +181,6 @@ public class RetailService {
 
 
 
-
         // --------------------------------------
         // return the new total
         return newLevelUpTotal;

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(name = "level-up-service")
 public interface LevelUpServiceClient {
 
-
     @RequestMapping(value = "/levelup/customerid/{customerid}", method = RequestMethod.GET)
     public LevelUp getLevelUp(@PathVariable int customerid);
 
