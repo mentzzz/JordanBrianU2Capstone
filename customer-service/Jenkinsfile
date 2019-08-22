@@ -5,32 +5,38 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
+    options {
+        skipStagesAfterUnstable()
+    }
     stages {
         stage('Build') {
             steps {
-                dir("${env.WORKSPACE}/customer-servicd"){
-                sh 'mvn -B -DskipTests clean package'
+                dir("${env.WORKSPACE}/customer-service"){
+                    sh "pwd"
+                    sh 'mvn -B -DskipTests clean package'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                dir("${env.WORKSPACE}/customer-service"){
+                    sh "pwd"
+                    sh 'mvn test'
+                }
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+        stage('Deliver') {
+            steps {
+                dir("${env.WORKSPACE}/customer-service"){
+                    sh "pwd"
+                    sh './jenkins/scripts/deliver.sh'
                 }
             }
         }
     }
-        stage('Test') {
-                    steps {
-                    dir("${env.WORKSPACE}/customer-servicd") {
-                        sh 'mvn test'
-                        }
-                    }
-                    post {
-                        always {
-                            junit 'target/surefire-reports/*.xml'
-                        }
-                    }
-                }
-        stage('Deliver') {
-                    steps {
-                        dir("${env.WORKSPACE}/customer-servicd") {
-                        sh './jenkins/scripts/deliver.sh'
-                        }
-                    }
-                }
-                }
+}
