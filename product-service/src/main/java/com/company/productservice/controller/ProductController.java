@@ -41,7 +41,7 @@ public class ProductController {
         return service.getAllProducts();
     }
 
-    @PutMapping(value = "/products/id/{id}")
+    @PutMapping(value = "/id/{id}")
     public void updateProduct(@RequestBody Product product, @PathVariable int id) {
         if (id != product.getId()) {
             throw new IllegalArgumentException("Product ID on path must match the ID in the product object");
