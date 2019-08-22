@@ -34,19 +34,19 @@ public interface InvoiceServiceClient {
     // INVOICE ITEM ROUTES
 
 
-    @RequestMapping(value = "/invoiceitems", method = RequestMethod.POST)
+    @RequestMapping(value = "/invoices/invoiceitems", method = RequestMethod.POST)
     public InvoiceItem createInvoiceItem(@RequestBody InvoiceItem invoiceItem);
 
-    @RequestMapping(value = "/invoiceitems/id/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/invoices/invoiceitems/id/{id}", method = RequestMethod.GET)
     public InvoiceItem getInvoiceItemById(@PathVariable int id);
 
-    @RequestMapping(value = "/invoiceitems", method = RequestMethod.GET)
+    @RequestMapping(value = "/invoices/invoiceitems", method = RequestMethod.GET)
     public List<InvoiceItem> getAllInvoiceItems();
 
-    @RequestMapping(value = "/invoiceitems/id/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/invoices/invoiceitems/id/{id}", method = RequestMethod.PUT)
     public void updateInvoiceItem(@PathVariable int id, @RequestBody InvoiceItem invoiceItem);
 
-    @RequestMapping(value = "/invoiceitems/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/invoices/invoiceitems/{id}", method = RequestMethod.DELETE)
     public void deleteInvoiceItem(@PathVariable int id);
 
 
