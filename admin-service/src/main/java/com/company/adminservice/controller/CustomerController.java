@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class CustomerController {
 
@@ -20,6 +22,31 @@ public class CustomerController {
         return customer;
     }
 
+    @RequestMapping(value = "/administration/customers", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Customer> getAllCustomers() {
+        List<Customer> customer = service.findAllCustomers();
+        return customer;
+    }
+
+    @RequestMapping(value = "/administration/customers/{id}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public Customer getCustomerById(@PathVariable("id") int id) {
+        Customer customer = service.findCustomer(id);
+        return customer;
+    }
+
+    @RequestMapping(value = "/administration/customers/{id}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateCustomer(@PathVariable("id") int id, @RequestBody Customer customer) {
+        service.updateCustomer(id, customer);
+    }
+
+    @RequestMapping(value = "/administration/customers/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCustomer(@PathVariable(name = "id") int id) {
+        service.deleteCustomer(id);
+    }
 
 
 

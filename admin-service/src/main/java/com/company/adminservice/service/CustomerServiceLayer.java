@@ -17,36 +17,27 @@ public class CustomerServiceLayer {
 
     // CREATE CUSTOMER
     public Customer createCustomer(Customer customer) {
-        // use feign to create a new customer
-        customer = customerServiceClient.createCustomer(customer);
-        return customer;
+        return customerServiceClient.createCustomer(customer);
     }
-
 
     // FIND CUSTOMER BY ID
     public Customer findCustomer(int id) {
-        // use feign to find a post
-        Customer customer = customerServiceClient.getCustomerById(id);
-        return customer;
-    }
+        return customerServiceClient.getCustomerById(id);
+      }
 
     // FINDALL CUSTOMER
     public List<Customer> findAllCustomers() {
-        // use feign to find all post
-        List<Customer> customer = customerServiceClient.getAllCustomers();
-        return customer;
+        return customerServiceClient.getAllCustomers();
     }
 
     // UPDATE CUSTOMER
     public void updateCustomer(int id, Customer customer) {
-        // use feign to update a new post
         customerServiceClient.updateCustomer(id, customer);
     }
 
     // DELETE CUSTOMER BY ID
     public void deleteCustomer(int id) {
-        // use feign to delete a post
-        customerServiceClient.deleteCustomer(id);
+         customerServiceClient.deleteCustomer(id);
     }
 
 

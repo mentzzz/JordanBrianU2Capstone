@@ -1,8 +1,6 @@
 package com.company.adminservice.service;
 
-import com.company.adminservice.dto.Inventory;
 import com.company.adminservice.dto.LevelUp;
-import com.company.adminservice.feign.InventoryServiceClient;
 import com.company.adminservice.feign.LevelUpServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,21 +17,18 @@ public class LevelUpServiceLayer {
 
     // CREATE LEVELUP
     public LevelUp createLevelUp(LevelUp levelUp) {
-        levelUp = levelUpServiceClient.createLevelUp(levelUp);
-        return levelUp;
+        return levelUpServiceClient.createLevelUp(levelUp);
     }
 
 
     // FIND LEVELUP BY ID
     public LevelUp findLevelUp(int id) {
-        LevelUp levelUp = levelUpServiceClient.getLevelUpById(id);
-        return levelUp;
+        return levelUpServiceClient.getLevelUpById(id);
     }
 
     // FINDALL LEVELUP
     public List<LevelUp> findAllLevelUps() {
-        List<LevelUp> levelUp = levelUpServiceClient.getAllLevelUps();
-        return levelUp;
+        return levelUpServiceClient.getAllLevelUps();
     }
 
     // UPDATE LEVELUP
@@ -49,8 +44,7 @@ public class LevelUpServiceLayer {
 
     // FIND LEVELUP BY CUSTOMER ID
     public LevelUp findLevelUpByCustomerId(int id) {
-        LevelUp levelUp = levelUpServiceClient.getLevelUpByCustomerId(id);
-        return levelUp;
+        return levelUpServiceClient.getLevelUpByCustomerId(id);
     }
 
 
