@@ -14,6 +14,11 @@ public class CustomerServiceLayer {
     private CustomerServiceClient customerServiceClient;
 
 
+//    public CustomerServiceLayer(CustomerServiceClient customerServiceClient) {
+//        this.customerServiceClient = customerServiceClient;
+//    }
+
+
 
     // CREATE CUSTOMER
     public Customer createCustomer(Customer customer) {
