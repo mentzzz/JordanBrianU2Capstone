@@ -390,6 +390,8 @@ New Create Order
 
 //============ ideas for que / circuit breaker
 
+** determine if the customer is new or existing **
+
 * do math and figure out the points for current order. 
 
 * send the points for this order to the que 
@@ -410,7 +412,74 @@ New Create Order
 
 
 
+--------
 
+figure out dtos for create order 
+
+OrderResponseView 
+    Customer customer 
+        - name address etc.
+
+    LevelUpInfo
+        - currentOrderPoints
+        - totalPoints 
+
+    SingleInvoice order 
+        - invoiceId 
+        - orderTotalPrice 
+        - List<OrderProducts>
+            - invoiceItemId 
+            - invoiceId (can i remove this one)
+            - quantity ( for this specific product ) 
+            - productTotalPrice ( qty * listPrice )
+            - Product product 
+                - id (productId ) 
+                - productName 
+                - productDescription 
+                - listPrice 
+                - unitPrice ( dont include this property )
+
+----
+    InStockProducts 
+        - int productId 
+        - int quantity
+        - Inventory inventory 
+            - inventoryid 
+            - productId 
+            - quantity ( of product in stock) 
+
+--  ( need a temp object to relate product to invoice, do this by customerId )
+
+        ProductInvoice
+            - customerId
+            - invoiceId  
+            - quantity 
+            - Product product 
+            - InvoiceItem invoiceItem 
+            - Inventory inventory 
+
+
+
+
+
+----  ( on hold )
+    TempInvoiceItem 
+        - invoiceItemId 
+        - invoiceId 
+        - inventoryId 
+        - quantity 
+        - productTotalPrice 
+        - Product product
+
+---- ( use instead of tempInvoiceItem )
+    InvoiceViewModel
+            - customerId
+            - purchase date 
+
+            List of:
+                - inventoryId
+                - quantity
+                - unitPrice
 
 
 

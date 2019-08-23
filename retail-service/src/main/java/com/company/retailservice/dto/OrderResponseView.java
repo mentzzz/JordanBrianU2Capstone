@@ -7,6 +7,7 @@ public class OrderResponseView {
 
 
     private Customer customer;
+    private LevelUpInfo levelUpInfo;
     private SingleInvoice order;
 
 
@@ -26,7 +27,16 @@ public class OrderResponseView {
     public void setOrder(SingleInvoice order) {
         this.order = order;
     }
-// equals / hash
+
+    public LevelUpInfo getLevelUpInfo() {
+        return levelUpInfo;
+    }
+
+    public void setLevelUpInfo(LevelUpInfo levelUpInfo) {
+        this.levelUpInfo = levelUpInfo;
+    }
+
+    // equals / hash
 
     @Override
     public boolean equals(Object o) {
@@ -34,21 +44,24 @@ public class OrderResponseView {
         if (o == null || getClass() != o.getClass()) return false;
         OrderResponseView that = (OrderResponseView) o;
         return customer.equals(that.customer) &&
+                levelUpInfo.equals(that.levelUpInfo) &&
                 order.equals(that.order);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(customer, order);
+        return Objects.hash(customer, levelUpInfo, order);
     }
 
 
     // to String
 
+
     @Override
     public String toString() {
         return "OrderResponseView{" +
                 "customer=" + customer +
+                ", levelUpInfo=" + levelUpInfo +
                 ", order=" + order +
                 '}';
     }
