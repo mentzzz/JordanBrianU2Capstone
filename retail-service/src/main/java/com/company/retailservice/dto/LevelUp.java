@@ -1,12 +1,18 @@
 package com.company.retailservice.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class LevelUp {
+public class LevelUp implements Serializable {
     private int id;
     private int customerId;
     private int points;
+    @JsonDeserialize
+    @JsonSerialize
     private LocalDate memberDate;
 
     public LevelUp() {
