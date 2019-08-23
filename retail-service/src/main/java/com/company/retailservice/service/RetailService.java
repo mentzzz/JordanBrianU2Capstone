@@ -2,17 +2,19 @@ package com.company.retailservice.service;
 
 import com.company.retailservice.dto.*;
 import com.company.retailservice.feign.*;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class RetailService {
-
 
     // Dependencies
 
@@ -27,10 +29,23 @@ public class RetailService {
     @Autowired
     private InvoiceServiceClient invoiceServiceClient;
 
+    public RetailService(LevelUpServiceClient client) {
+        this.levelUpServiceClient = client;
+    }
 
+
+    @HystrixCommand(fallbackMethod = "getLevelUpPoints")
+    public LevelUp levelUpPoints(int id) {
+
+        return levelUpServiceClient.getLevelUpByCustomer(id);
+    }
     // constructor
 
     // Service Layer public methods:
+
+    public LevelUp getLevelUpPoints(int customerId) {
+        return levelUpServiceClient.getLevelUpByCustomer(customerId);
+    }
 
     public Product getByProductId(int id) {
 
@@ -187,7 +202,7 @@ public class RetailService {
 
     public int includeLevelUp(int customerId, BigDecimal totalPrice) {
 
-        LevelUp tempLevelUp = levelUpServiceClient.getLevelUp(customerId);
+        LevelUp tempLevelUp = levelUpServiceClient.getLevelUpByCustomer(customerId);
 
         // divide the totalPrice by 50
 
