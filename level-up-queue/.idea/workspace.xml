@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dc002a3-5708-43de-ae05-ac39c075e337" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/levelupqueue/Listener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/service/NewRetailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OverAll-Planning.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../OverAll-Planning.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/level-up-queue.iml" beforeDir="false" />
-=======
- //     <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/dto/LevelUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/dto/LevelUp.java" afterDir="false" />
- //     <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/feign/LevelUpServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/feign/LevelUpServiceClient.java" afterDir="false" />
-
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,7 +20,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/company/levelupqueue/util/feign/Payload/Payload.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="98">
-              <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/company/levelupqueue/Listener">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="629">
-              <caret line="37" lean-forward="true" selection-end-line="37" />
+              <caret line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -85,7 +76,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/company/levelupqueue/Listener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+              <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#600#601#0" expanded="true" />
@@ -142,71 +133,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="level-up-queue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="level-up-queue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="level-up-queue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="level-up-queue" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="level-up-queue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="level-up-queue" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="level-up-queue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="level-up-queue" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="level-up-queue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="level-up-queue" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="levelupqueue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="level-up-queue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="level-up-queue" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="levelupqueue" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="level-up-queue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="level-up-queue" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="levelupqueue" type="462c0819:PsiDirectoryNode" />
-              <item name="feign" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="level-up-queue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="level-up-queue" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="levelupqueue" type="462c0819:PsiDirectoryNode" />
-              <item name="feign" type="462c0819:PsiDirectoryNode" />
-              <item name="Payload" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -380,7 +307,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/company/levelupqueue/util/feign/Payload/Payload.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
-          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -410,14 +337,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/company/levelupqueue/Listener">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
-          <caret line="37" lean-forward="true" selection-end-line="37" />
+          <caret line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/company/levelupqueue/Listener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#600#601#0" expanded="true" />
