@@ -7,11 +7,11 @@ import java.util.Objects;
 public class SingleInvoice {
 
     private int invoiceId;
-
-    private List<TempInvoiceItem> orderItems;
-
     private BigDecimal orderTotalPrice;
-    private int levelUpPoints;
+
+    private List<OrderProducts> orderItems;
+
+
 
 
     // getters / setters
@@ -24,14 +24,6 @@ public class SingleInvoice {
         this.invoiceId = invoiceId;
     }
 
-    public List<TempInvoiceItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(List<TempInvoiceItem> orderItems) {
-        this.orderItems = orderItems;
-    }
-
     public BigDecimal getOrderTotalPrice() {
         return orderTotalPrice;
     }
@@ -40,12 +32,12 @@ public class SingleInvoice {
         this.orderTotalPrice = orderTotalPrice;
     }
 
-    public int getLevelUpPoints() {
-        return levelUpPoints;
+    public List<OrderProducts> getOrderItems() {
+        return orderItems;
     }
 
-    public void setLevelUpPoints(int levelUpPoints) {
-        this.levelUpPoints = levelUpPoints;
+    public void setOrderItems(List<OrderProducts> orderItems) {
+        this.orderItems = orderItems;
     }
 
 
@@ -57,14 +49,13 @@ public class SingleInvoice {
         if (o == null || getClass() != o.getClass()) return false;
         SingleInvoice that = (SingleInvoice) o;
         return invoiceId == that.invoiceId &&
-                levelUpPoints == that.levelUpPoints &&
-                orderItems.equals(that.orderItems) &&
-                orderTotalPrice.equals(that.orderTotalPrice);
+                orderTotalPrice.equals(that.orderTotalPrice) &&
+                orderItems.equals(that.orderItems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(invoiceId, orderItems, orderTotalPrice, levelUpPoints);
+        return Objects.hash(invoiceId, orderTotalPrice, orderItems);
     }
 
 
@@ -75,9 +66,8 @@ public class SingleInvoice {
     public String toString() {
         return "SingleInvoice{" +
                 "invoiceId=" + invoiceId +
-                ", orderItems=" + orderItems +
                 ", orderTotalPrice=" + orderTotalPrice +
-                ", levelUpPoints=" + levelUpPoints +
+                ", orderItems=" + orderItems +
                 '}';
     }
 }
