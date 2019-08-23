@@ -2,6 +2,43 @@
 Capstone2 Planning
 
 
+ToDo 
+
+1) Admin-Service 
+    - add validations 
+    - add service layer test 
+
+2) Retail-Service
+    - add que
+    - add circuit breaker 
+    - add validations 
+    - service layer test 
+    - finish create order methods 
+
+3) Get que working
+
+4) Get Circuit breaker working
+
+5) add spring security to Admin-service 
+
+6) do we need spring security to Retail-service
+
+7) do we need to do more with jenkins? Kesh was tring to get the tests to run...
+
+8) deploy project to pws 
+    - add database to pws...
+
+9) Yaml file 
+
+10) Uml diagram 
+
+11) Both complete pivotal tracker 
+
+
+
+
+
+//---------------------------------------
 
 Admin-Service, port 8282
 
