@@ -5,11 +5,11 @@ Capstone2 Planning
 ToDo 
 
 1) Admin-Service 
-    - add validations 
+    - add validations -----------------
     - add service layer test 
 
 2) Retail-Service
-    - add que
+    - add que KIND OF DONE--look at again 
     - add validations 
     - service layer test 
     - finish create order methods 
@@ -17,18 +17,12 @@ ToDo
 3) Get que working
 
 
-5) add spring security to Admin-service 
+5) add spring security to Admin-service ------------------
 
-
-
-7) do we need to do more with jenkins? Kesh was tring to get the tests to run...
-
-8) deploy project to pws 
-    - add database to pws...
 
 9) Yaml file 
 
-10) Uml diagram 
+10) Uml diagram -----kind of done
 
 11) Both complete pivotal tracker 
 
