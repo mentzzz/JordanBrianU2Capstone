@@ -22,23 +22,28 @@ public class RetailServiceController {
     @RequestMapping(value = "/retail/product/{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public Product getAllProducts(@PathVariable int id) {
+        System.out.println("in the service layer");
         return service.getByProductId(id);
     }
 
-    @RequestMapping(value = "/retail/levelup/{id}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public LevelUp getLevelUp(@PathVariable("id") int id) {
-        System.out.println("This is from the web service");
-        return service.getLevelUpPoints(id);
-    }
+
+
+//    @RequestMapping(value = "/retail/levelup/{id}", method = RequestMethod.GET)
+//    @ResponseStatus(HttpStatus.OK)
+//    public LevelUp getLevelUp(@PathVariable("id") int id) {
+//        System.out.println("This is from the web service");
+//        return service.getLevelUpPoints(id);
+//    }
 
 
     @RequestMapping(value = "/retail/order", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public OrderResponseView createOrder(@RequestBody OrderRequestView orderRequestView) {
 
+        System.out.println("in the service layer");
+        System.out.println(orderRequestView);
 
+        return service.createOrder(orderRequestView);
 
-        return null;
     }
 }

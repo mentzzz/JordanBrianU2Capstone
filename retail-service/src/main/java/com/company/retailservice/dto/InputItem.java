@@ -7,7 +7,7 @@ public class InputItem {
 
   //  private Product product;
   private int productId;
-  private BigDecimal itemPrice;
+//  private BigDecimal itemPrice;
     private int quantity;
 
 
@@ -31,13 +31,13 @@ public class InputItem {
         this.quantity = quantity;
     }
 
-    public BigDecimal getItemPrice() {
-        return itemPrice;
-    }
-
-    public void setItemPrice(BigDecimal itemPrice) {
-        this.itemPrice = itemPrice;
-    }
+//    public BigDecimal getItemPrice() {
+//        return itemPrice;
+//    }
+//
+//    public void setItemPrice(BigDecimal itemPrice) {
+//        this.itemPrice = itemPrice;
+//    }
 
     // equals / hash
 
@@ -63,7 +63,6 @@ public class InputItem {
     public String toString() {
         return "InputItem{" +
                 "productId=" + productId +
-                ", itemPrice=" + itemPrice +
                 ", quantity=" + quantity +
                 '}';
     }
