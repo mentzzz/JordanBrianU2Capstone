@@ -10,18 +10,16 @@ ToDo
 
 2) Retail-Service
     - add que
-    - add circuit breaker 
     - add validations 
     - service layer test 
     - finish create order methods 
 
 3) Get que working
 
-4) Get Circuit breaker working
 
 5) add spring security to Admin-service 
 
-6) do we need spring security to Retail-service
+
 
 7) do we need to do more with jenkins? Kesh was tring to get the tests to run...
 
@@ -296,6 +294,92 @@ Inventory
 
 
 
+//===============================
+
+New Create Order 
+
+
+* Check the list of products to order to see if they are in stock
+    - create a new list of items that are in stock.
+
+    inStockList object
+        - int productId
+        - int quantity
+        - Inventory inventory 
+
+* Create a list of Inventory object with the updated invoice qty 
+    - send this list back to Inventory-service to update inventory 
+
+        List<Inventory> updateInventoryList 
+
+    - method to update inventory   updateInventory(List<Inventory> list ) {
+        for loop to send each Inventory object
+    }
+
+* Create method to add a Product object for each productId from inStockList object 
+
+
+    inStockListWithProduct object
+        - Product product 
+        - int quantity
+        - int quantityInstock
+
+
+* create Customer object  ( new or existing)     
+
+
+* Create an Invoice now that we have a customerId
+
+            InvoiceViewModel
+                - customerId
+                - purchase date 
+
+                List of:
+                    - inventoryId
+                    - quantity
+                    - unitPrice
+        * from Invoice-service 
+            
+            InvoiceViewModel 
+                - invoiceId 
+                - customerId
+                - purchase date 
+
+                List of: InvoiceItems 
+                    - invoiceItemId 
+                    - invoiceId 
+                    - inventoryId
+                    - quantity
+                    - unitPrice
+
+    * for each invoice 
+        find the total for each product (use TempInvoiceItem)
+
+
+* create a Total Price Method()
+
+    public BigDecimal totalOrderPrice(InvoiceView invoiceView) {
+
+        BigDecimal cost;
+
+        for( InvoiceItem each: invoiceView.getInvoiceItemList() ) {
+
+            cost += each.getQuantity() * each.getUnitPrice();
+
+        }
+
+        return cost;
+
+    }
+
+
+    * Add data to the SingleInvoice object
+
+
+    * -- method to add Level-Up Service to SingleInvoice object
+
+
+    * Add SingleInvoice object to the responseView object 
 
 
 
@@ -304,14 +388,25 @@ Inventory
 
 
 
+//============ ideas for que / circuit breaker
 
+* do math and figure out the points for current order. 
 
+* send the points for this order to the que 
 
+* do get request by customerid to Levelup service to get their point history
 
+    -if this service is down it will return a list with one object with 0 points
+    -if it is working it will return a list of LevelUP objects that will need to be summed.
 
+* add to the responseview a message of either
 
+    - ( level up service was working )
+        - your points for this order are ##
+        - your total points are ## ( current + history )
 
-
+    - (level up service is down ) 
+        - your points for this order are ## 
 
 
 
