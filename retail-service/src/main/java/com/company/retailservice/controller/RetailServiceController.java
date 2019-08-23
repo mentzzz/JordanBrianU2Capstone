@@ -1,9 +1,6 @@
 package com.company.retailservice.controller;
 
-import com.company.retailservice.dto.OrderRequestView;
-import com.company.retailservice.dto.OrderResponseView;
-import com.company.retailservice.dto.Product;
-import com.company.retailservice.dto.SearchResponseView;
+import com.company.retailservice.dto.*;
 import com.company.retailservice.service.RetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -26,6 +23,13 @@ public class RetailServiceController {
     @ResponseStatus(HttpStatus.OK)
     public Product getAllProducts(@PathVariable int id) {
         return service.getByProductId(id);
+    }
+
+    @RequestMapping(value = "/retail/levelup/{id}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public LevelUp getLevelUp(@PathVariable("id") int id) {
+        System.out.println("This is from the web service");
+        return service.getLevelUpPoints(id);
     }
 
 

@@ -5,6 +5,7 @@ import com.company.levelupservice.dao.LevelUpDaoJdbcTemplateImpl;
 import com.company.levelupservice.model.LevelUp;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

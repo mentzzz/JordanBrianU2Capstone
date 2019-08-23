@@ -3,16 +3,23 @@ package com.company.levelupservice.controller;
 import com.company.levelupservice.exception.NotFoundException;
 import com.company.levelupservice.model.LevelUp;
 import com.company.levelupservice.service.LevelUpService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping("/levelup")
 @RefreshScope
+@EnableCircuitBreaker
 public class LevelUpController {
 
     @Autowired
