@@ -12,6 +12,7 @@ import java.net.URI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 @Component
 public class RetailService {
@@ -35,7 +36,7 @@ public class RetailService {
 
 
     @HystrixCommand(fallbackMethod = "getLevelUpPoints")
-    public LevelUp levelUpPoints(int id) {
+    public List<LevelUp> levelUpPoints(int id) {
 
         return levelUpServiceClient.getLevelUpByCustomer(id);
     }
@@ -43,8 +44,16 @@ public class RetailService {
 
     // Service Layer public methods:
 
-    public LevelUp getLevelUpPoints(int customerId) {
-        return levelUpServiceClient.getLevelUpByCustomer(customerId);
+    public List<LevelUp> getLevelUpPoints(int customerId) {
+        LevelUp levelUp = new LevelUp();
+        levelUp.setCustomerId(customerId);
+        levelUp.setPoints(0);
+        levelUp.setMemberDate(LocalDate.now());
+        List<LevelUp> returnList = new ArrayList<>();
+        returnList.add(levelUp);
+
+//        return levelUpServiceClient.getLevelUpByCustomer(customerId);
+        return returnList;
     }
 
     public Product getByProductId(int id) {
@@ -202,7 +211,7 @@ public class RetailService {
 
     public int includeLevelUp(int customerId, BigDecimal totalPrice) {
 
-        LevelUp tempLevelUp = levelUpServiceClient.getLevelUpByCustomer(customerId);
+        List<LevelUp> tempLevelUp = levelUpServiceClient.getLevelUpByCustomer(customerId);
 
         // divide the totalPrice by 50
 

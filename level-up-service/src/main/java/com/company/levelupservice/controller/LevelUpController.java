@@ -48,8 +48,8 @@ public class LevelUpController {
 
     @GetMapping("/customerid/{customerid}")
     @ResponseStatus(HttpStatus.OK)
-    public LevelUp getLevelUpByCustomer(@PathVariable("customerid") int customerId) {
-        LevelUp levelUp = service.getLevelUpByCustomerId(customerId);
+    public List<LevelUp> getLevelUpByCustomer(@PathVariable("customerid") int customerId) {
+        List<LevelUp> levelUp = service.getLevelUpByCustomerId(customerId);
         if (levelUp == null)
             throw new NotFoundException("Not found");
         return levelUp;
