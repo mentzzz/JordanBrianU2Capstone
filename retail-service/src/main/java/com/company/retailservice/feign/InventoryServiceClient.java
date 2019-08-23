@@ -32,7 +32,7 @@ public interface InventoryServiceClient {
 
 
 
-    @RequestMapping(value = "/inventory/product/{productid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/inventory/productid/{productid}", method = RequestMethod.GET)
     public Inventory getInventoryByProductId(@PathVariable int productid);
 
 ////    @RequestMapping(value = "/inventory/{inventory}", method = RequestMethod.GET)

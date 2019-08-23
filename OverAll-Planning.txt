@@ -408,6 +408,11 @@ New Create Order
 
 --------
 
+** The requestOrderView 
+    Customer customer 
+    List<InputItem> products 
+    ** may not need the price here. 
+
 figure out dtos for create order 
 
 OrderResponseView 
@@ -477,7 +482,13 @@ OrderResponseView
 
 
 
+^^^^^^^^^^^^^^^
 
+to try sat morning
+
+sout in each serice to see what is coming in as a request from retail-service.
+
+go from there....
 
 
 
