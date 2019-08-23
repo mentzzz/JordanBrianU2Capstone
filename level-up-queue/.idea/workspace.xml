@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6dc002a3-5708-43de-ae05-ac39c075e337" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/dto/LevelUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/dto/LevelUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/feign/LevelUpServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/feign/LevelUpServiceClient.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
