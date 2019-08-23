@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Invoice {
-    @Min(1)
+
     private int invoiceId;
     @Min(1)
     private int customerId;

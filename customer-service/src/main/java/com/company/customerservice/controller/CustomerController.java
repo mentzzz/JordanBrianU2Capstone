@@ -25,7 +25,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/id/{id}")
-    public Customer getCustomer(@PathVariable int id) {
+    public Customer getCustomer(@PathVariable("id") int id) {
         Customer customer = service.getCustomer(id);
 
         if (customer == null) {

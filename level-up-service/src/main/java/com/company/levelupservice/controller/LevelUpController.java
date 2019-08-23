@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -52,6 +53,7 @@ public class LevelUpController {
         List<LevelUp> levelUp = service.getLevelUpByCustomerId(customerId);
         if (levelUp == null)
             throw new NotFoundException("Not found");
+        LocalDate.
         return levelUp;
     }
 
