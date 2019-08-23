@@ -1,5 +1,6 @@
 package com.company.adminservice.dto;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -7,7 +8,9 @@ public class Invoice {
 
 
     private int invoiceId;
+    @NotEmpty
     private int customerId;
+    @NotEmpty
     private LocalDate purchaseDate;
 
 

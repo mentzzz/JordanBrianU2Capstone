@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class LevelUp {
-    @Min(1)
+
     private int id;
     @Min(1)
     private int customerId;

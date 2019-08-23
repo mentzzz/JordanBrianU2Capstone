@@ -1,13 +1,18 @@
 package com.company.productservice.model;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Product {
     private int id;
+    @NotNull
     private String productName;
+    @NotNull
     private String productDescription;
+    @NotNull
     private BigDecimal listPrice;
+    @NotNull
     private BigDecimal unitCost;
 
     public int getId() {

@@ -4,7 +4,6 @@ import javax.validation.constraints.Min;
 import java.util.Objects;
 
 public class Inventory {
-    @Min(1)
     private int id;
     @Min(1)
     private int productId;
