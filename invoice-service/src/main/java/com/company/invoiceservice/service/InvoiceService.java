@@ -55,12 +55,14 @@ public class InvoiceService {
         invoice.setPurchaseDate(invoiceViewModel.getPurchaseDate());
         invoice = invoiceDao.addInvoice(invoice);
         invoiceViewModel.setInvoiceId(invoice.getInvoiceId());
-
         List<InvoiceItem> invoiceItems = invoiceViewModel.getInvoiceItems();
-        invoiceItems.stream().forEach(invoiceItem -> {
-            invoiceItem.setInvoiceId(invoiceViewModel.getInvoiceId());
-            invoiceItemDao.addInvoiceItem(invoiceItem);
-        });
+        if(invoiceViewModel.getInvoiceItems() != null) {
+            invoiceItems.stream().forEach(invoiceItem -> {
+                invoiceItem.setInvoiceId(invoiceViewModel.getInvoiceId());
+                invoiceItemDao.addInvoiceItem(invoiceItem);
+            });
+        }
+
 
         invoiceItems = invoiceItemDao.getInvoiceItemsByInvoiceId(invoice.getInvoiceId());
         invoiceViewModel.setInvoiceItems(invoiceItems);

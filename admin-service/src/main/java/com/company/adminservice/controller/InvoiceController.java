@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -18,32 +19,32 @@ public class InvoiceController {
 
     @RequestMapping(value = "/administration/invoices", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public InvoiceViewModel createInvoice(@RequestBody InvoiceViewModel invoiceViewModel) {
+    public InvoiceViewModel createInvoice(@RequestBody InvoiceViewModel invoiceViewModel, Principal principal) {
         return service.createInvoice(invoiceViewModel);
 
     }
 
     @RequestMapping(value = "/administration/invoices", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public List<InvoiceViewModel> getAllInvoices() {
+    public List<InvoiceViewModel> getAllInvoices(Principal principal) {
         return service.findAllInvoices();
     }
 
     @RequestMapping(value = "/administration/invoices/{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public InvoiceViewModel getInvoiceById(@PathVariable("id") int id) {
+    public InvoiceViewModel getInvoiceById(@PathVariable("id") int id, Principal principal) {
         return service.findInvoice(id);
     }
 
     @RequestMapping(value = "/administration/invoices/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateInvoice(@PathVariable("id") int id, @RequestBody InvoiceViewModel invoiceViewModel) {
+    public void updateInvoice(@PathVariable("id") int id, @RequestBody InvoiceViewModel invoiceViewModel, Principal principal) {
         service.updateInvoice(id, invoiceViewModel);
     }
 
     @RequestMapping(value = "/administration/invoices/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteInvoice(@PathVariable(name = "id") int id) {
+    public void deleteInvoice(@PathVariable(name = "id") int id, Principal principal) {
         service.deleteInvoice(id);
     }
 
