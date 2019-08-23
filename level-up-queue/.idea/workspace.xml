@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6dc002a3-5708-43de-ae05-ac39c075e337" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../level-up-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../level-up-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../level-up-service/src/main/java/com/company/levelupservice/LevelUpServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../level-up-service/src/main/java/com/company/levelupservice/LevelUpServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../level-up-service/src/main/java/com/company/levelupservice/controller/LevelUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../level-up-service/src/main/java/com/company/levelupservice/controller/LevelUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../level-up-service/src/main/java/com/company/levelupservice/service/LevelUpService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../level-up-service/src/main/java/com/company/levelupservice/service/LevelUpService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../level-up-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../level-up-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../level-up-service/src/test/java/com/company/levelupservice/service/LevelUpServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../level-up-service/src/test/java/com/company/levelupservice/service/LevelUpServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../retail-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/RetailServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/RetailServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/controller/RetailServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/controller/RetailServiceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/feign/LevelUpServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/feign/LevelUpServiceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/service/RetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/service/RetailService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

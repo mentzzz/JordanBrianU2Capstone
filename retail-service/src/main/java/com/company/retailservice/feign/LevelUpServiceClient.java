@@ -30,11 +30,14 @@ public interface LevelUpServiceClient {
 
 
     @RequestMapping(value = "/levelup/customerid/{customerid}", method = RequestMethod.GET)
-    public LevelUp getLevelUpByCustomerId(@PathVariable int customerid);
+    public LevelUp getLevelUpByCustomer(@PathVariable("customerid") int customerId);
+// =======
+//     public LevelUp getLevelUpByCustomerId(@PathVariable int customerid);
 
 
 
-//    @RequestMapping(value = "/levelup/customerid/{customerid}", method = RequestMethod.GET)
-//    public LevelUp getLevelUpByCustomer(@PathVariable int customerId);
+// //    @RequestMapping(value = "/levelup/customerid/{customerid}", method = RequestMethod.GET)
+// //    public LevelUp getLevelUpByCustomer(@PathVariable int customerId);
+// >>>>>>> master
 
 }
