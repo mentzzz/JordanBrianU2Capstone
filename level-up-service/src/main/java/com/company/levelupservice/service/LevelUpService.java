@@ -43,7 +43,7 @@ public class LevelUpService {
         return dao.getLevelUp(id);
     }
 
-    public LevelUp getLevelUpByCustomerId(int customerId) {
+    public List<LevelUp> getLevelUpByCustomerId(int customerId) {
         return dao.getLevelUpByCustomerId(customerId);
     }
 }
