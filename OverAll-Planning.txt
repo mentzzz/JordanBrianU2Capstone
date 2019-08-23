@@ -10,18 +10,16 @@ ToDo
 
 2) Retail-Service
     - add que
-    - add circuit breaker 
     - add validations 
     - service layer test 
     - finish create order methods 
 
 3) Get que working
 
-4) Get Circuit breaker working
 
 5) add spring security to Admin-service 
 
-6) do we need spring security to Retail-service
+
 
 7) do we need to do more with jenkins? Kesh was tring to get the tests to run...
 
@@ -386,6 +384,29 @@ New Create Order
 
 
 
+
+
+
+
+//============ ideas for que / circuit breaker
+
+* do math and figure out the points for current order. 
+
+* send the points for this order to the que 
+
+* do get request by customerid to Levelup service to get their point history
+
+    -if this service is down it will return a list with one object with 0 points
+    -if it is working it will return a list of LevelUP objects that will need to be summed.
+
+* add to the responseview a message of either
+
+    - ( level up service was working )
+        - your points for this order are ##
+        - your total points are ## ( current + history )
+
+    - (level up service is down ) 
+        - your points for this order are ## 
 
 
 
