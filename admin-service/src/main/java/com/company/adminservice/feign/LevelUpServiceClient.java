@@ -24,7 +24,7 @@ public interface LevelUpServiceClient {
     @RequestMapping(value = "/levelup/id/{id}", method = RequestMethod.PUT)
     public void updateLevelUp(@PathVariable int id, @RequestBody LevelUp levelUp);
 
-    @RequestMapping(value = "/levelup/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/levelup/id/{id}", method = RequestMethod.DELETE)
     public void deleteLevelUp(@PathVariable int id);
 
 
