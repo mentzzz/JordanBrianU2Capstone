@@ -73,9 +73,10 @@ public class LevelUpServiceTest {
         levelUp.setMemberDate(LocalDate.of(2009, 12, 12));
         levelUp.setPoints(25);
         levelUp = dao.addLevelUp(levelUp);
-        LevelUp levelUp1 = dao.getLevelUpByCustomerId(levelUp.getCustomerId());
+        List<LevelUp> levelUp1 = dao.getLevelUpByCustomerId(levelUp.getCustomerId());
 
 
-        assertEquals(levelUp1, levelUp);
+        assertEquals(levelUp1.size(),
+                1);
     }
 }

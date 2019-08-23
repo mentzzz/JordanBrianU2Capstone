@@ -53,7 +53,6 @@ public class LevelUpController {
         List<LevelUp> levelUp = service.getLevelUpByCustomerId(customerId);
         if (levelUp == null)
             throw new NotFoundException("Not found");
-        LocalDate.
         return levelUp;
     }
 

@@ -1,12 +1,16 @@
 package com.company.adminservice.dto;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class LevelUp {
     private int id;
+    @NotEmpty
     private int customerId;
+    @NotEmpty
     private int points;
+    @NotEmpty
     private LocalDate memberDate;
 
     public int getId() {
