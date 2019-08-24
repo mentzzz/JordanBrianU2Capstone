@@ -24,6 +24,10 @@ public class InventoryService {
         return inventory;
     }
 
+    public int getQuantityByProduct(int productId) {
+        return dao.getQuantityByProduct(productId);
+    }
+
     public List<Inventory> getAllInventorys() {
         return dao.getAllInventorys();
     }

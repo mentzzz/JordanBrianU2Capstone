@@ -17,6 +17,12 @@ public class InventoryController {
     @Autowired
     InventoryService service;
 
+    @GetMapping("/quantity/{productid}")
+    @ResponseStatus(HttpStatus.OK)
+    public int getQuantity(@PathVariable("productid") int productId) {
+        return service.getQuantityByProduct(productId);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Inventory createInventory(@RequestBody Inventory inventory) {
