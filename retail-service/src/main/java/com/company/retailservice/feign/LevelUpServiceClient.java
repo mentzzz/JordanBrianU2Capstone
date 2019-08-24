@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "level-up-service")
+//@FeignClient(name = "level-up-service")
+@FeignClient(name = "level-up-service", fallback = FallBack.class)
 public interface LevelUpServiceClient {
 
     @GetMapping("/points/{customerid}")
