@@ -21,6 +21,13 @@ public class InvoiceController {
 
     @PostMapping
     public InvoiceViewModel createInvoice(@RequestBody InvoiceViewModel invoiceViewModel) {
+
+        System.out.println("!!!!!!!");
+        System.out.println(invoiceViewModel.getInvoice().toString());
+        System.out.println(invoiceViewModel.getInvoiceItems().toString());
+
+
+
         return service.saveInvoice(invoiceViewModel);
     }
 
@@ -46,7 +53,8 @@ public class InvoiceController {
 
     @PutMapping(value = "/id/{id}")
     public void updateInvoice(@RequestBody InvoiceViewModel invoice, @PathVariable int id) {
-        if (id != invoice.getInvoiceId()) {
+//        if (id != invoice.getInvoiceId()) {
+        if (id != invoice.getInvoice().getInvoiceId()) {
             throw new IllegalArgumentException("Invoice ID on path must match the ID in the invoice object");
         }
 

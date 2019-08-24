@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class RetailServiceController {
@@ -18,32 +19,29 @@ public class RetailServiceController {
 
     // Retail-Service Controller Route Methods:
 
-    // *** Test route only ***
-    @RequestMapping(value = "/retail/product/{id}", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/retail/products", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public Product getAllProducts(@PathVariable int id) {
+    public List<Product> getAllProducts() {
+        System.out.println("in the service layer");
+        return service.getAllProducts();
+    }
+
+    @RequestMapping(value = "/retail/products/{id}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public Product getProductById(@PathVariable int id) {
         System.out.println("in the service layer");
         return service.getByProductId(id);
     }
-
-
-
-//    @RequestMapping(value = "/retail/levelup/{id}", method = RequestMethod.GET)
-//    @ResponseStatus(HttpStatus.OK)
-//    public LevelUp getLevelUp(@PathVariable("id") int id) {
-//        System.out.println("This is from the web service");
-//        return service.getLevelUpPoints(id);
-//    }
 
 
     @RequestMapping(value = "/retail/order", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public OrderResponseView createOrder(@RequestBody OrderRequestView orderRequestView) {
 
-        System.out.println("in the service layer");
-        System.out.println(orderRequestView);
-
         return service.createOrder(orderRequestView);
 
     }
+
+    
 }
