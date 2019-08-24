@@ -1,4 +1,4 @@
-package com.company.levelupqueue;
+package com.company.bqueservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LevelUpQueueApplicationTests {
+public class BqueServiceApplicationTests {
 
 	@Test
 	public void contextLoads() {
