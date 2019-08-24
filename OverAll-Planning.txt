@@ -385,6 +385,8 @@ New Create Order
 //============ ideas for que / circuit breaker
 
 ** determine if the customer is new or existing **
+        if i do a get request here, i can use the circuit breaker
+        use what ever returns 1) acutal data or 2) 0
 
 * do math and figure out the points for current order. 
 
@@ -428,15 +430,12 @@ OrderResponseView
         - orderTotalPrice 
         - List<OrderProducts>
             - invoiceItemId 
-            - invoiceId (can i remove this one)
             - quantity ( for this specific product ) 
+            - listPrice 
             - productTotalPrice ( qty * listPrice )
-            - Product product 
-                - id (productId ) 
-                - productName 
-                - productDescription 
-                - listPrice 
-                - unitPrice ( dont include this property )
+            - productName
+            - productDescription 
+
 
 ----
     InStockProducts 
@@ -456,7 +455,7 @@ OrderResponseView
             - Product product 
             - InvoiceItem invoiceItem 
             - Inventory inventory 
-
+            - totalPrice ?? was this added later?
 
 
 
@@ -490,6 +489,26 @@ sout in each serice to see what is coming in as a request from retail-service.
 
 go from there....
 
+--
+
+cleaning up dto's from retail service
+
+need the following:
+Customer
+InputItem 
+InStockProducts 
+Inventory 
+Invoice 
+InvoiceItem 
+InvoiceViewModel 
+LevelUp 
+LevelUpInfo 
+OrderProducts 
+OrderRequestView 
+OrderResponseView 
+Product 
+ProductInvoice 
+SingleInvoice 
 
 
 

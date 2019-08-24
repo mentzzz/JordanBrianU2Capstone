@@ -5,18 +5,19 @@ import java.util.Objects;
 public class Inventory {
 
 
-    private int inventoryId;
+    private int id;
     private int productId;
     private int quantity;
 
     // getters / setters
 
-    public int getInventoryId() {
-        return inventoryId;
+
+    public int getId() {
+        return id;
     }
 
-    public void setInventoryId(int inventoryId) {
-        this.inventoryId = inventoryId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getProductId() {
@@ -43,14 +44,14 @@ public class Inventory {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Inventory inventory = (Inventory) o;
-        return inventoryId == inventory.inventoryId &&
+        return id == inventory.id &&
                 productId == inventory.productId &&
                 quantity == inventory.quantity;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(inventoryId, productId, quantity);
+        return Objects.hash(id, productId, quantity);
     }
 
 
@@ -60,7 +61,7 @@ public class Inventory {
     @Override
     public String toString() {
         return "Inventory{" +
-                "inventoryId=" + inventoryId +
+                "id=" + id +
                 ", productId=" + productId +
                 ", quantity=" + quantity +
                 '}';
