@@ -2,6 +2,7 @@ package com.company.retailservice.service;
 
 import com.company.retailservice.dto.*;
 import com.company.retailservice.feign.*;
+import com.company.retailservice.producer.LevelUpProducer;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,8 @@ import java.util.logging.Level;
 public class RetailService {
 
     // Dependencies
+    @Autowired
+    private LevelUpProducer levelUpQue;
 
     @Autowired
     private ProductServiceClient productServiceClient;
@@ -294,13 +297,15 @@ public class RetailService {
 
 
 
-//        // send the points for this order to Levelup-Service
-//        // this will use the levelup-que
-//        LevelUp currentLevelUp = new LevelUp();
-//        currentLevelUp.setPoints(newPoints);
-//        currentLevelUp.setCustomerId(customerId);
-//        currentLevelUp.setMemberDate(LocalDate.now());
-//
+        // send the points for this order to Levelup-Service
+        // this will use the levelup-que
+        LevelUp currentLevelUp = new LevelUp();
+        currentLevelUp.setPoints(newPoints);
+        currentLevelUp.setCustomerId(customerId);
+        currentLevelUp.setMemberDate(LocalDate.now());
+
+        levelUpQue.createLevelUp(currentLevelUp);
+
 //        levelUpServiceClient.createLevelUp(currentLevelUp);
 
         return levelUpInfo;

@@ -37,23 +37,23 @@ public class LevelUpProducer {
         return SAVE_QUEUED_MSG;
     }
 
-    @PutMapping(value = "/levelup/{id}")
-    public String updateLevelUp(@RequestBody LevelUp levelUp) {
-
-        LevelUp msg = new LevelUp(levelUp.getId(), levelUp.getCustomerId(), levelUp.getPoints(), levelUp.getMemberDate());
-        System.out.println("Sending point(s)...");
-        rabbitTemplate.convertAndSend(EXCHANGE, ROUTING_KEY, msg);
-        System.out.println("Point(s) update sent");
-
-        return UPDATE_QUEUED_MSG;
-    }
-
-    @RequestMapping(value = "/retail/order", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public OrderResponseView createOrder(@RequestBody OrderRequestView orderRequestView) {
-
-
-        return service.createOrder(orderRequestView);
-
-    }
+//    @PutMapping(value = "/levelup/{id}")
+//    public String updateLevelUp(@RequestBody LevelUp levelUp) {
+//
+//        LevelUp msg = new LevelUp(levelUp.getId(), levelUp.getCustomerId(), levelUp.getPoints(), levelUp.getMemberDate());
+//        System.out.println("Sending point(s)...");
+//        rabbitTemplate.convertAndSend(EXCHANGE, ROUTING_KEY, msg);
+//        System.out.println("Point(s) update sent");
+//
+//        return UPDATE_QUEUED_MSG;
+//    }
+//
+//    @RequestMapping(value = "/retail/order", method = RequestMethod.POST)
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public OrderResponseView createOrder(@RequestBody OrderRequestView orderRequestView) {
+//
+//
+//        return service.createOrder(orderRequestView);
+//
+//    }
 }
