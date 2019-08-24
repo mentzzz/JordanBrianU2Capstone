@@ -35,26 +35,26 @@ public class RetailService {
     }
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d0ddf905b979cf586ba5853a3ecbb6539a9bffb7
-//    @HystrixCommand(fallbackMethod = "getLevelUpPoints")
-//    public List<LevelUp> levelUpPoints(int id) {
+//<<<<<<< HEAD
 //
-//        return levelUpServiceClient.getLevelUpByCustomer(id);
-//    }
-<<<<<<< HEAD
-=======
-=======
-
-//     @HystrixCommand(fallbackMethod = "getLevelUpPoints")
-//     public List<LevelUp> levelUpPoints(int id) {
-// 
-//         return levelUpServiceClient.getLevelUpByCustomer(id);
-//     }
->>>>>>> d0ddf905b979cf586ba5853a3ecbb6539a9bffb7
+//
+//=======
+//>>>>>>> d0ddf905b979cf586ba5853a3ecbb6539a9bffb7
+////    @HystrixCommand(fallbackMethod = "getLevelUpPoints")
+////    public List<LevelUp> levelUpPoints(int id) {
+////
+////        return levelUpServiceClient.getLevelUpByCustomer(id);
+////    }
+//<<<<<<< HEAD
+//=======
+//=======
+//
+////     @HystrixCommand(fallbackMethod = "getLevelUpPoints")
+////     public List<LevelUp> levelUpPoints(int id) {
+////
+////         return levelUpServiceClient.getLevelUpByCustomer(id);
+////     }
+//>>>>>>> d0ddf905b979cf586ba5853a3ecbb6539a9bffb7
 
 
 

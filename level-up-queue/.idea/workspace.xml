@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dc002a3-5708-43de-ae05-ac39c075e337" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/levelupqueue/LevelUpQueueApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/levelupqueue/LevelUpQueueApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/levelupqueue/Listener" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/levelupqueue/Listener" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/levelupqueue/Listener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/levelupqueue/Listener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/levelupqueue/util/feign/PointsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/levelupqueue/util/feign/PointsClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/producer/LevelUpProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/producer/LevelUpProducer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/service/RetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/service/RetailService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
