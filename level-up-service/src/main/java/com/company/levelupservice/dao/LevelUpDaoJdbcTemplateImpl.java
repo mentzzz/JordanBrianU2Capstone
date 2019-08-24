@@ -4,6 +4,7 @@ import com.company.levelupservice.model.LevelUp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,11 +36,21 @@ public class LevelUpDaoJdbcTemplateImpl implements LevelUpDao {
     private static final String SELECT_LEVEL_UP_BY_CUSTOMER =
             "select * from level_up where customer_id =? ";
 
+    private static final String SELECT_TOTAL_POINTS_FROM_LEVEL_BY_CUSTOMER =
+            "select sum(points) from level_up where customer_id = ?";
+
     @Autowired
     public LevelUpDaoJdbcTemplateImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
+    @Override
+    public int getTotalLevelUpPointsByCustomerId(int customerId) {
+       int points = jdbcTemplate.queryForObject(SELECT_TOTAL_POINTS_FROM_LEVEL_BY_CUSTOMER, Integer.class, customerId);
+
+        return points;
+    }
 
     @Override
     @Transactional

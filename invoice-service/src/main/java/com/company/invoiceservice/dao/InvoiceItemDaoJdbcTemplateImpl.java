@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -33,6 +34,11 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     private static final String SELECT_INVOICE_ITEM_BY_INVOICE_ID =
             "select * from invoice_item where invoice_id = ?";
 
+    private static final String SELECT_TOTAL_PRICE_BY_INVOICE_ID =
+            "select sum(unit_price) from invoice_item where invoice_id = ?";
+
+    private static final String SELECT_TOTAL_QUANTITY_BY_INVOICE_ID =
+            "select sum(quantity) from invoice_item where invoice_id = ?";
 
     @Autowired
     public InvoiceItemDaoJdbcTemplateImpl(JdbcTemplate jdbcTemplate) {
@@ -53,6 +59,17 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
         invoiceItem.setId(id);
 
         return invoiceItem;
+    }
+
+    public BigDecimal totalPriceItems(int invoiceId) {
+        BigDecimal total = jdbcTemplate.queryForObject(SELECT_TOTAL_PRICE_BY_INVOICE_ID, BigDecimal.class, invoiceId);
+
+        return total;
+    }
+
+    public int totalQuantityByInvoice(int invoiceId) {
+        int total = jdbcTemplate.queryForObject(SELECT_TOTAL_QUANTITY_BY_INVOICE_ID, Integer.class, invoiceId);
+        return total;
     }
 
     @Override
