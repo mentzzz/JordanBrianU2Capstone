@@ -105,7 +105,7 @@ public class InvoiceController {
         return service.getTotalByInvoice(invoiceId);
     }
 
-    @GetMapping("/invoiceitems/total/{invoiceid}")
+    @GetMapping("/invoiceitems/quantity/{invoiceid}")
     @ResponseStatus(HttpStatus.OK)
     public int getQuantity(@PathVariable("{invoiceid}") int invoiceId) {
         return service.getTotalQuantity(invoiceId);

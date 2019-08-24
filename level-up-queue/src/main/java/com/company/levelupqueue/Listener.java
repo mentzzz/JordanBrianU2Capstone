@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
-@Component
+//@Component
 public class Listener {
 
     @Autowired

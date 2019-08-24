@@ -2,6 +2,7 @@ package com.company.retailservice.service;
 
 import com.company.retailservice.dto.*;
 import com.company.retailservice.feign.*;
+import com.company.retailservice.producer.LevelUpProducer;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,8 @@ import java.util.logging.Level;
 public class RetailService {
 
     // Dependencies
+    @Autowired
+    private LevelUpProducer levelUpQue;
 
     @Autowired
     private ProductServiceClient productServiceClient;
@@ -35,16 +38,30 @@ public class RetailService {
     }
 
 
+//<<<<<<< HEAD
+//
+//
+//=======
+//>>>>>>> d0ddf905b979cf586ba5853a3ecbb6539a9bffb7
+////    @HystrixCommand(fallbackMethod = "getLevelUpPoints")
+////    public List<LevelUp> levelUpPoints(int id) {
+////
+////        return levelUpServiceClient.getLevelUpByCustomer(id);
+////    }
+//<<<<<<< HEAD
+//=======
+//=======
+//
+////     @HystrixCommand(fallbackMethod = "getLevelUpPoints")
+////     public List<LevelUp> levelUpPoints(int id) {
+////
+////         return levelUpServiceClient.getLevelUpByCustomer(id);
+////     }
+//>>>>>>> d0ddf905b979cf586ba5853a3ecbb6539a9bffb7
 
-    @HystrixCommand(fallbackMethod = "getLevelUpPoints")
-    public List<LevelUp> levelUpPoints(int id) {
-
-        return levelUpServiceClient.getLevelUpByCustomer(id);
-    }
 
 
     // Service Layer public methods:
-
 
 
     public Product getByProductId(int id) {
@@ -57,54 +74,55 @@ public class RetailService {
         return productServiceClient.getAllProducts();
     }
 
-    public OrderViewModel makeOrder(OrderViewModel model) throws Exception {
-        OrderViewModel orderViewModel = new OrderViewModel();
-//        orderViewModel.setInvoiceId(model.getInvoiceId());
-//        orderViewModel.setProductId(model.getProductId());
-//        orderViewModel.setProducts(model.getProducts());
+//    public OrderViewModel makeOrder(OrderViewModel model) throws Exception {
+//        OrderViewModel orderViewModel = new OrderViewModel();
+////        orderViewModel.setInvoiceId(model.getInvoiceId());
+////        orderViewModel.setProductId(model.getProductId());
+////        orderViewModel.setProducts(model.getProducts());
+////
+//        Customer customer = checkCustomer(model.getCustomer());
+//        customerServiceClient.createCustomer(customer);
 //
-        Customer customer = checkCustomer(model.getCustomer());
-
-        InvoiceViewModel invoice = invoiceServiceClient.getInvoiceById(model.getInvoiceId());
-        List<ProductOrder> products = model.getProducts();
-        Inventory inventory = inventoryServiceClient.getInventoryByProductId(model.getProductId());
-//        if (inventoryServiceClient.getQuantity(model.getProduct().getId()) > 0 )
-        BigDecimal total = invoiceServiceClient.getTotal(model.getInvoiceId());
-        Integer totalQuantity = invoiceServiceClient.getQuantity(model.getInvoiceId());
-        BigDecimal newTotal = total.multiply(new BigDecimal(totalQuantity));
-
-
-        List<LevelUp> levelUps = levelUpServiceClient.getLevelUpByCustomer(model.getCustomer().getId());
-        Product product = productServiceClient.getProductById(model.getProductId());
-        List<InvoiceViewModel> item = invoiceServiceClient.getItemByInvoice(model.getProductId());
-        item.stream()
-                .forEach(n -> {
-                    n.setInvoice(invoiceServiceClient.getInvoiceById(model.getInvoiceId()));
-                    invoiceServiceClient.createInvoice(n);
-                );
-
-                        });
-//        product.getListPrice() *
-        orderViewModel.setInvoiceId(invoice.getInvoice().getInvoiceId());
-//        model.setCustomer(customer);
-        orderViewModel.setProducts(model.getProducts());
-//        model.setProducts(products);
-        orderViewModel.setCustomer(model.getCustomer());
-        orderViewModel.setTotal(newTotal);
-        orderViewModel.se
-        //setting total points by calling sum method to add all total points in database
-        model.setTotalPoints(levelUpServiceClient.getTotalPoints(model.getCustomer().getId()));
-        if (model.getQuantity() > 0 && model.getQuantity() <= inventoryServiceClient.getQuantity(model.getProduct().getId()))
-            return model;
-        else
-            throw new Exception("Quantity must be greater than zero or your product isn't in stock ");
-
-    }
+//        InvoiceViewModel invoice = invoiceServiceClient.getInvoiceById(model.getInvoiceId());
+//        List<ProductOrder> products = model.getProducts();
+//        Inventory inventory = inventoryServiceClient.getInventoryByProductId(model.getProductId());
+////        if (inventoryServiceClient.getQuantity(model.getProduct().getId()) > 0 )
+//        BigDecimal total = invoiceServiceClient.getTotal(model.getInvoiceId());
+//        Integer totalQuantity = invoiceServiceClient.getQuantity(model.getInvoiceId());
+//        BigDecimal newTotal = total.multiply(new BigDecimal(totalQuantity));
+//
+//
+//        List<LevelUp> levelUps = levelUpServiceClient.getLevelUpByCustomer(model.getCustomer().getId());
+//        Product product = productServiceClient.getProductById(model.getProductId());
+//        List<InvoiceViewModel> item = invoiceServiceClient.getItemByInvoice(model.getProductId());
+//        item.stream()
+//                .forEach(n -> {
+//                    n.setInvoice(invoiceServiceClient.getInvoiceById(model.getInvoiceId()));
+//                    invoiceServiceClient.createInvoice(n);
+//                );
+//
+//                        });
+////        product.getListPrice() *
+//        orderViewModel.setInvoiceId(invoice.getInvoice().getInvoiceId());
+////        model.setCustomer(customer);
+//        orderViewModel.setProducts(model.getProducts());
+////        model.setProducts(products);
+//        orderViewModel.setCustomer(model.getCustomer());
+//        orderViewModel.setTotal(newTotal);
+//        orderViewModel.se
+//        //setting total points by calling sum method to add all total points in database
+//        model.setTotalPoints(levelUpServiceClient.getTotalPoints(model.getCustomer().getId()));
+//        if (model.getQuantity() > 0 && model.getQuantity() <= inventoryServiceClient.getQuantity(model.getProduct().getId()))
+//            return model;
+//        else
+//            throw new Exception("Quantity must be greater than zero or your product isn't in stock ");
+//
+//    }
 
 
     public OrderResponseView createOrder(OrderRequestView orderRequestView) {
 
-
+        System.out.println();
         System.out.println("In the serviceLayer");
         System.out.println(orderRequestView.toString());
         System.out.println();
@@ -120,7 +138,9 @@ public class RetailService {
             // maybe throw execption "out of stock"
             return null;
         }
-        System.out.println("!!!!!!!!!!!!!!!!!!!1");
+
+        System.out.println();
+        System.out.println("!!!!!!!!!!!!!!!!!!!1  IN STOCK PRODUCTS ");
 
         System.out.println(inStockProducts.toString());
         System.out.println();
@@ -185,9 +205,17 @@ public class RetailService {
 
 
 
+        // trying to use the circuit breaker methods here
+        List<LevelUp> tempLevelUpList = levelUpPoints(customer.getId());
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println(" @@@@@  this is the level up list ");
+        System.out.println(tempLevelUpList.toString());
 
         // create LevelUpInfo object
-        LevelUpInfo levelUpInfo = createLevelUp(customer.getId(), singleInvoice.getOrderTotalPrice() );
+        LevelUpInfo levelUpInfo = createLevelUp(customer.getId(), singleInvoice.getOrderTotalPrice(), tempLevelUpList );
         System.out.println();
         System.out.println();
         System.out.println("!!!!!!!!!!!!!!!! CREATING LEVELUPINFO OBJECT  ");
@@ -197,25 +225,16 @@ public class RetailService {
 
 
 
-        // create OrderResponseView object
+   //      create OrderResponseView object
         return createResponseView(singleInvoice, customer, levelUpInfo );
+//       return null;
     }
 
 
     // Helper Methods
 
 
-    public List<LevelUp> getLevelUpPoints(int customerId) {
-        LevelUp levelUp = new LevelUp();
-        levelUp.setCustomerId(customerId);
-        levelUp.setPoints(0);
-        levelUp.setMemberDate(LocalDate.now());
-        List<LevelUp> returnList = new ArrayList<>();
-        returnList.add(levelUp);
 
-//        return levelUpServiceClient.getLevelUpByCustomer(customerId);
-        return returnList;
-    }
 
 
     public OrderResponseView createResponseView(SingleInvoice singleInvoice, Customer customer, LevelUpInfo levelUpInfo) {
@@ -232,7 +251,28 @@ public class RetailService {
 
 
 
-    public LevelUpInfo createLevelUp(int customerId, BigDecimal totalPrice) {
+    public List<LevelUp> levelUpPoints(int id) {
+
+        return levelUpServiceClient.getLevelUpByCustomer(id);
+    }
+
+
+
+    public LevelUpInfo createLevelUp(int customerId, BigDecimal totalPrice, List<LevelUp> leveluplist) {
+
+        // find the total from the leveluplist parameter
+        // loop the list and add up the existing points
+        int pointHistoryTotal = 0;
+
+        for ( LevelUp each: leveluplist ) {
+            pointHistoryTotal += each.getPoints();
+        }
+
+        System.out.println();
+        System.out.println(" this is the points total ");
+        System.out.println(pointHistoryTotal);
+        System.out.println();
+
 
         // Calculate the current level up points from the current order
         int factor = BigDecimal.valueOf(totalPrice.longValue())
@@ -240,23 +280,22 @@ public class RetailService {
         // use this int to calculate the total points
         int newPoints = factor * 10;
 
+
         // Create a LevelUpInfo object that will be returned
         LevelUpInfo levelUpInfo = new LevelUpInfo();
         // add the current points to the return object
         levelUpInfo.setCurrentOrderPoints(newPoints);
-
-        // this method will incorporate the circuit breaker
-        // it will return a list of LevelUp objects. It will atleast
-        // have a 0 index
-        List<LevelUp> leveluplist = levelUpServiceClient.getLevelUpByCustomer(customerId);
-        // loop the list and add up the existing points
-        int pointHistoryTotal = 0;
-
-        for ( LevelUp each: leveluplist ) {
-            pointHistoryTotal += each.getPoints();
-        }
         // set the total history point to the return object
         levelUpInfo.setTotalPoints(pointHistoryTotal + newPoints);
+
+
+        System.out.println();
+        System.out.println(   "see shat is here for level up    "     );
+        System.out.println();
+        System.out.println(levelUpInfo.toString());
+
+
+
 
         // send the points for this order to Levelup-Service
         // this will use the levelup-que
@@ -265,7 +304,36 @@ public class RetailService {
         currentLevelUp.setCustomerId(customerId);
         currentLevelUp.setMemberDate(LocalDate.now());
 
-        levelUpServiceClient.createLevelUp(currentLevelUp);
+        levelUpQue.createLevelUp(currentLevelUp);
+
+//        levelUpServiceClient.createLevelUp(currentLevelUp);
+
+        return levelUpInfo;
+    }
+
+
+    public LevelUpInfo getLevelUpPoints(int customerId, BigDecimal totalPrice) {
+
+        // Calculate the current level up points from the current order
+        int factor = BigDecimal.valueOf(totalPrice.longValue())
+                .divide(BigDecimal.valueOf(50)).intValue();
+        // use this int to calculate the total points
+        int newPoints = factor * 10;
+
+        // send the points for this order to Levelup-Service
+        // this will use the levelup-que
+        LevelUp currentLevelUp = new LevelUp();
+        currentLevelUp.setPoints(newPoints);
+        currentLevelUp.setCustomerId(customerId);
+        currentLevelUp.setMemberDate(LocalDate.now());
+
+//        levelUpServiceClient.createLevelUp(currentLevelUp);
+
+        // Create a LevelUpInfo object that will be returned
+        LevelUpInfo levelUpInfo = new LevelUpInfo();
+        // add the current points to the return object
+        levelUpInfo.setCurrentOrderPoints(newPoints);
+        levelUpInfo.setTotalPoints(newPoints);
 
         return levelUpInfo;
     }
@@ -414,6 +482,13 @@ public class RetailService {
     public List<InStockProducts> checkIfInStock(List<InputItem> itemList) {
         // loop the list of products to see if they are in stock
         // if they are available put them in a temp list
+
+        System.out.println();
+        System.out.println();
+        System.out.println("!!!!!!!!!!!!!!  THIS IS THE ITEM LIST TO CHECK INVENTORY ON");
+        System.out.println(itemList.toString());
+
+
 
         List<InStockProducts> inStockProducts = new ArrayList<>();
 
@@ -764,6 +839,10 @@ public class RetailService {
 //
 //        return returnList;
 //    }
+
+    public BigDecimal getTotalPriceByInvoice(int invoiceId) {
+      return invoiceServiceClient.getTotal(invoiceId).multiply(new BigDecimal(invoiceServiceClient.getQuantity(invoiceId)));
+    }
 
 
 
