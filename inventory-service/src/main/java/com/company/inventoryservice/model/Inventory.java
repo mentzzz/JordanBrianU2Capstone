@@ -1,10 +1,13 @@
 package com.company.inventoryservice.model;
 
+import javax.validation.constraints.Min;
 import java.util.Objects;
 
 public class Inventory {
     private int id;
+    @Min(1)
     private int productId;
+    @Min(0)
     private int quantity;
 
     public int getId() {

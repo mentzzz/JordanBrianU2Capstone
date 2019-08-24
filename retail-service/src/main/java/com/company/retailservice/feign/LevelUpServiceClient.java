@@ -3,13 +3,46 @@ package com.company.retailservice.feign;
 import com.company.retailservice.dto.LevelUp;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 @FeignClient(name = "level-up-service")
 public interface LevelUpServiceClient {
 
+<<<<<<< HEAD
+=======
+
+    @RequestMapping(value = "/levelup", method = RequestMethod.POST)
+    public LevelUp createLevelUp(@RequestBody LevelUp levelUp);
+
+    @RequestMapping(value = "/levelup", method = RequestMethod.GET)
+    public List<LevelUp> getAllLevelUps();
+
+    @RequestMapping(value = "/levelup/id/{id}", method = RequestMethod.GET)
+    public LevelUp getLevelUpById(@PathVariable int id);
+
+    @RequestMapping(value = "/levelup/id/{id}", method = RequestMethod.PUT)
+    public void updateLevelUp(@PathVariable int id, @RequestBody LevelUp levelUp);
+
+    @RequestMapping(value = "/levelup/id/{id}", method = RequestMethod.DELETE)
+    public void deleteLevelUp(@PathVariable int id);
+
+
+>>>>>>> d47480d11b233955b071f30045083c6f417bd26d
     @RequestMapping(value = "/levelup/customerid/{customerid}", method = RequestMethod.GET)
-    public LevelUp getLevelUp(@PathVariable int customerid);
+    public List<LevelUp> getLevelUpByCustomer(@PathVariable("customerid") int customerId);
+
+
+// =======
+//     public LevelUp getLevelUpByCustomerId(@PathVariable int customerid);
+
+
+
+// //    @RequestMapping(value = "/levelup/customerid/{customerid}", method = RequestMethod.GET)
+// //    public LevelUp getLevelUpByCustomer(@PathVariable int customerId);
+// >>>>>>> master
 
 }

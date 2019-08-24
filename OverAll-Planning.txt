@@ -2,6 +2,35 @@
 Capstone2 Planning
 
 
+ToDo 
+
+1) Admin-Service 
+    - add validations -----------------
+    - add service layer test 
+
+2) Retail-Service
+    - add que KIND OF DONE--look at again 
+    - add validations 
+    - service layer test 
+    - finish create order methods 
+
+3) Get que working
+
+
+5) add spring security to Admin-service ------------------
+
+
+9) Yaml file 
+
+10) Uml diagram -----kind of done
+
+11) Both complete pivotal tracker 
+
+
+
+
+
+//---------------------------------------
 
 Admin-Service, port 8282
 
@@ -259,6 +288,92 @@ Inventory
 
 
 
+//===============================
+
+New Create Order 
+
+
+* Check the list of products to order to see if they are in stock
+    - create a new list of items that are in stock.
+
+    inStockList object
+        - int productId
+        - int quantity
+        - Inventory inventory 
+
+* Create a list of Inventory object with the updated invoice qty 
+    - send this list back to Inventory-service to update inventory 
+
+        List<Inventory> updateInventoryList 
+
+    - method to update inventory   updateInventory(List<Inventory> list ) {
+        for loop to send each Inventory object
+    }
+
+* Create method to add a Product object for each productId from inStockList object 
+
+
+    inStockListWithProduct object
+        - Product product 
+        - int quantity
+        - int quantityInstock
+
+
+* create Customer object  ( new or existing)     
+
+
+* Create an Invoice now that we have a customerId
+
+            InvoiceViewModel
+                - customerId
+                - purchase date 
+
+                List of:
+                    - inventoryId
+                    - quantity
+                    - unitPrice
+        * from Invoice-service 
+            
+            InvoiceViewModel 
+                - invoiceId 
+                - customerId
+                - purchase date 
+
+                List of: InvoiceItems 
+                    - invoiceItemId 
+                    - invoiceId 
+                    - inventoryId
+                    - quantity
+                    - unitPrice
+
+    * for each invoice 
+        find the total for each product (use TempInvoiceItem)
+
+
+* create a Total Price Method()
+
+    public BigDecimal totalOrderPrice(InvoiceView invoiceView) {
+
+        BigDecimal cost;
+
+        for( InvoiceItem each: invoiceView.getInvoiceItemList() ) {
+
+            cost += each.getQuantity() * each.getUnitPrice();
+
+        }
+
+        return cost;
+
+    }
+
+
+    * Add data to the SingleInvoice object
+
+
+    * -- method to add Level-Up Service to SingleInvoice object
+
+
+    * Add SingleInvoice object to the responseView object 
 
 
 
@@ -267,23 +382,133 @@ Inventory
 
 
 
+//============ ideas for que / circuit breaker
+
+** determine if the customer is new or existing **
+        if i do a get request here, i can use the circuit breaker
+        use what ever returns 1) acutal data or 2) 0
+
+* do math and figure out the points for current order. 
+
+* send the points for this order to the que 
+
+* do get request by customerid to Levelup service to get their point history
+
+    -if this service is down it will return a list with one object with 0 points
+    -if it is working it will return a list of LevelUP objects that will need to be summed.
+
+* add to the responseview a message of either
+
+    - ( level up service was working )
+        - your points for this order are ##
+        - your total points are ## ( current + history )
+
+    - (level up service is down ) 
+        - your points for this order are ## 
+
+
+
+--------
+
+** The requestOrderView 
+    Customer customer 
+    List<InputItem> products 
+    ** may not need the price here. 
+
+figure out dtos for create order 
+
+OrderResponseView 
+    Customer customer 
+        - name address etc.
+
+    LevelUpInfo
+        - currentOrderPoints
+        - totalPoints 
+
+    SingleInvoice order 
+        - invoiceId 
+        - orderTotalPrice 
+        - List<OrderProducts>
+            - invoiceItemId 
+            - quantity ( for this specific product ) 
+            - listPrice 
+            - productTotalPrice ( qty * listPrice )
+            - productName
+            - productDescription 
+
+
+----
+    InStockProducts 
+        - int productId 
+        - int quantity
+        - Inventory inventory 
+            - inventoryid 
+            - productId 
+            - quantity ( of product in stock) 
+
+--  ( need a temp object to relate product to invoice, do this by customerId )
+
+        ProductInvoice
+            - customerId
+            - invoiceId  
+            - quantity 
+            - Product product 
+            - InvoiceItem invoiceItem 
+            - Inventory inventory 
+            - totalPrice ?? was this added later?
 
 
 
 
+----  ( on hold )
+    TempInvoiceItem 
+        - invoiceItemId 
+        - invoiceId 
+        - inventoryId 
+        - quantity 
+        - productTotalPrice 
+        - Product product
+
+---- ( use instead of tempInvoiceItem )
+    InvoiceViewModel
+            - customerId
+            - purchase date 
+
+            List of:
+                - inventoryId
+                - quantity
+                - unitPrice
 
 
 
+^^^^^^^^^^^^^^^
 
+to try sat morning
 
+sout in each serice to see what is coming in as a request from retail-service.
 
+go from there....
 
+--
 
+cleaning up dto's from retail service
 
-
-
-
-
+need the following:
+Customer
+InputItem 
+InStockProducts 
+Inventory 
+Invoice 
+InvoiceItem 
+InvoiceViewModel 
+LevelUp 
+LevelUpInfo 
+OrderProducts 
+OrderRequestView 
+OrderResponseView 
+Product 
+ProductInvoice 
+SingleInvoice 
 
 
 

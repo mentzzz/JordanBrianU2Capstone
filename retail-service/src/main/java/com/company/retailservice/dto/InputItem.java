@@ -1,11 +1,13 @@
 package com.company.retailservice.dto;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class InputItem {
 
   //  private Product product;
   private int productId;
+//  private BigDecimal itemPrice;
     private int quantity;
 
 
@@ -29,6 +31,13 @@ public class InputItem {
         this.quantity = quantity;
     }
 
+//    public BigDecimal getItemPrice() {
+//        return itemPrice;
+//    }
+//
+//    public void setItemPrice(BigDecimal itemPrice) {
+//        this.itemPrice = itemPrice;
+//    }
 
     // equals / hash
 

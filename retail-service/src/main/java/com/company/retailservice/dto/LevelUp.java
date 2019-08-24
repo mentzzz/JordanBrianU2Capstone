@@ -1,13 +1,30 @@
 package com.company.retailservice.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class LevelUp {
+public class LevelUp implements Serializable {
     private int id;
     private int customerId;
     private int points;
+    @JsonDeserialize
+    @JsonSerialize
     private LocalDate memberDate;
+
+    public LevelUp() {
+
+    }
+
+    public LevelUp(int id, int customerId, int points, LocalDate memberDate) {
+        this.id = id;
+        this.customerId = customerId;
+        this.points = points;
+        this.memberDate = memberDate;
+    }
 
     public int getId() {
         return id;
@@ -39,6 +56,16 @@ public class LevelUp {
 
     public void setMemberDate(LocalDate memberDate) {
         this.memberDate = memberDate;
+    }
+
+    @Override
+    public String toString() {
+        return "LevelUp{" +
+                "id=" + id +
+                ", customerId=" + customerId +
+                ", points=" + points +
+                ", memberDate=" + memberDate +
+                '}';
     }
 
     @Override

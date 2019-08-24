@@ -86,9 +86,9 @@ public class LevelUpDaoJdbcTemplateImpl implements LevelUpDao {
     }
 
     @Override
-    public LevelUp getLevelUpByCustomerId(int customerId) {
+    public List<LevelUp> getLevelUpByCustomerId(int customerId) {
         try {
-            return jdbcTemplate.queryForObject(SELECT_LEVEL_UP_BY_CUSTOMER, this::mapRowToLevelUp, customerId);
+            return jdbcTemplate.query(SELECT_LEVEL_UP_BY_CUSTOMER, this::mapRowToLevelUp, customerId);
         }catch (EmptyResultDataAccessException e) {
             // if there is no match for this invoice id, return null
             return null;

@@ -1,9 +1,6 @@
 package com.company.retailservice.controller;
 
-import com.company.retailservice.dto.OrderRequestView;
-import com.company.retailservice.dto.OrderResponseView;
-import com.company.retailservice.dto.Product;
-import com.company.retailservice.dto.SearchResponseView;
+import com.company.retailservice.dto.*;
 import com.company.retailservice.service.RetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -11,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class RetailServiceController {
@@ -21,10 +19,18 @@ public class RetailServiceController {
 
     // Retail-Service Controller Route Methods:
 
-    // *** Test route only ***
-    @RequestMapping(value = "/retail/product/{id}", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/retail/products", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public Product getAllProducts(@PathVariable int id) {
+    public List<Product> getAllProducts() {
+        System.out.println("in the service layer");
+        return service.getAllProducts();
+    }
+
+    @RequestMapping(value = "/retail/products/{id}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public Product getProductById(@PathVariable int id) {
+        System.out.println("in the service layer");
         return service.getByProductId(id);
     }
 
@@ -33,8 +39,9 @@ public class RetailServiceController {
     @ResponseStatus(HttpStatus.CREATED)
     public OrderResponseView createOrder(@RequestBody OrderRequestView orderRequestView) {
 
+        return service.createOrder(orderRequestView);
 
-
-        return null;
     }
+
+    
 }

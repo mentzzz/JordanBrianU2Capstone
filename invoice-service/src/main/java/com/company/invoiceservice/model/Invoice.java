@@ -1,11 +1,16 @@
 package com.company.invoiceservice.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Invoice {
+
     private int invoiceId;
+    @Min(1)
     private int customerId;
+    @NotNull
     private LocalDate purchaseDate;
 
     public int getInvoiceId() {
@@ -45,5 +50,16 @@ public class Invoice {
     @Override
     public int hashCode() {
         return Objects.hash(invoiceId, customerId, purchaseDate);
+    }
+
+    // to string
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "invoiceId=" + invoiceId +
+                ", customerId=" + customerId +
+                ", purchaseDate=" + purchaseDate +
+                '}';
     }
 }

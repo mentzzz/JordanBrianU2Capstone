@@ -20,7 +20,7 @@ public class InventoryService {
 
     @Transactional
     public Inventory saveInventory(Inventory inventory) {
-        dao.addInventory(inventory);
+        inventory = dao.addInventory(inventory);
         return inventory;
     }
 

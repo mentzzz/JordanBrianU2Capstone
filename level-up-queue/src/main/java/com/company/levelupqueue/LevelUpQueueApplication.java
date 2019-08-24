@@ -7,13 +7,20 @@ import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+<<<<<<< HEAD
 import org.springframework.cloud.openfeign.EnableFeignClients;
+=======
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+>>>>>>> d47480d11b233955b071f30045083c6f417bd26d
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableFeignClients
 public class LevelUpQueueApplication {
+<<<<<<< HEAD
 
+=======
+>>>>>>> d47480d11b233955b071f30045083c6f417bd26d
 	public static final String  TOPIC_EXCHANGE_NAME= "level-up-exchange";
 	public static final String QUEUE_NAME="level-up-queue";
 	public static final String ROUTING_KEY="level.#";

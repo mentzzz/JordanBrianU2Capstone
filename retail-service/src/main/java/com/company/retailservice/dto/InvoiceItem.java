@@ -6,20 +6,22 @@ import java.util.Objects;
 public class InvoiceItem {
 
 
-    private int invoiceItemId;
+    private int id;
     private int invoiceId;
     private int inventoryId;
     private int quantity;
+
     private BigDecimal unitPrice;
 
     // getters / setters
 
-    public int getInvoiceItemId() {
-        return invoiceItemId;
+
+    public int getId() {
+        return id;
     }
 
-    public void setInvoiceItemId(int invoiceItemId) {
-        this.invoiceItemId = invoiceItemId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getInvoiceId() {
@@ -61,7 +63,7 @@ public class InvoiceItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceItem that = (InvoiceItem) o;
-        return invoiceItemId == that.invoiceItemId &&
+        return id == that.id &&
                 invoiceId == that.invoiceId &&
                 inventoryId == that.inventoryId &&
                 quantity == that.quantity &&
@@ -70,7 +72,7 @@ public class InvoiceItem {
 
     @Override
     public int hashCode() {
-        return Objects.hash(invoiceItemId, invoiceId, inventoryId, quantity, unitPrice);
+        return Objects.hash(id, invoiceId, inventoryId, quantity, unitPrice);
     }
 
 
@@ -80,7 +82,7 @@ public class InvoiceItem {
     @Override
     public String toString() {
         return "InvoiceItem{" +
-                "invoiceItemId=" + invoiceItemId +
+                "id=" + id +
                 ", invoiceId=" + invoiceId +
                 ", inventoryId=" + inventoryId +
                 ", quantity=" + quantity +
