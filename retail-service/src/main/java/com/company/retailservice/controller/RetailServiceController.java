@@ -15,17 +15,17 @@ public class RetailServiceController {
     @Autowired
     private RetailService service;
 
-    public static final String EXCHANGE = "note-exchange";
-    public static final String ROUTING_KEY = "note.#";
-    public static final String SAVE_QUEUED_MSG = "Note(s) queued for save";
-    public static final String UPDATE_QUEUED_MSG = "Note(s) queued for update";
-
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
-
-    public RetailServiceController(RabbitTemplate rabbitTemplate) {
-        this.rabbitTemplate = rabbitTemplate;
-    }
+//    public static final String EXCHANGE = "note-exchange";
+//    public static final String ROUTING_KEY = "note.#";
+//    public static final String SAVE_QUEUED_MSG = "Note(s) queued for save";
+//    public static final String UPDATE_QUEUED_MSG = "Note(s) queued for update";
+//
+//    @Autowired
+//    private RabbitTemplate rabbitTemplate;
+//
+//    public RetailServiceController(RabbitTemplate rabbitTemplate) {
+//        this.rabbitTemplate = rabbitTemplate;
+//    }
 
 
 
