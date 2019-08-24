@@ -1,29 +1,44 @@
-package com.company.levelupservice.model;
+package com.company.levelupqueue.util.feign.Payload;
 
+import com.company.levelupqueue.model.LevelUp;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ArraySerializerBase;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
-public class LevelUp {
-
+public class Payload {
     private int id;
-    @Min(1)
     private int customerId;
-    @Min(0)
     private int points;
-    @NotNull
     @JsonSerialize(using = LocalDateSerializer.class)
     // handles "yyyy-MM-dd" input just fine (note: "yyyy-M-d" format will not work)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate memberDate;
+
+    public Payload(int id, int customerId, int points, LocalDate memberDate) {
+        this.id = id;
+        this.customerId = customerId;
+        this.points = points;
+        this.memberDate = memberDate;
+    }
+
+    public Payload() {
+    }
+
+    @Override
+    public String toString() {
+        return "Payload{" +
+                "id=" + id +
+                ", customerId=" + customerId +
+                ", points=" + points +
+                ", memberDate=" + memberDate +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -57,16 +72,6 @@ public class LevelUp {
         this.memberDate = memberDate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LevelUp levelUp = (LevelUp) o;
-        return id == levelUp.id &&
-                customerId == levelUp.customerId &&
-                points == levelUp.points &&
-                memberDate.equals(levelUp.memberDate);
-    }
 
     @Override
     public int hashCode() {
