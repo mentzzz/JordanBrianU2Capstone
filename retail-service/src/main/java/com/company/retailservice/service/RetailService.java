@@ -35,15 +35,14 @@ public class RetailService {
     }
 
 
-    @HystrixCommand(fallbackMethod = "getLevelUpPoints")
-    public List<LevelUp> levelUpPoints(int id) {
-
-        return levelUpServiceClient.getLevelUpByCustomer(id);
-    }
+//    @HystrixCommand(fallbackMethod = "getLevelUpPoints")
+//    public List<LevelUp> levelUpPoints(int id) {
+//
+//        return levelUpServiceClient.getLevelUpByCustomer(id);
+//    }
 
 
     // Service Layer public methods:
-
 
 
     public Product getByProductId(int id) {
@@ -59,7 +58,7 @@ public class RetailService {
 
     public OrderResponseView createOrder(OrderRequestView orderRequestView) {
 
-
+        System.out.println();
         System.out.println("In the serviceLayer");
         System.out.println(orderRequestView.toString());
         System.out.println();
@@ -75,7 +74,9 @@ public class RetailService {
             // maybe throw execption "out of stock"
             return null;
         }
-        System.out.println("!!!!!!!!!!!!!!!!!!!1");
+
+        System.out.println();
+        System.out.println("!!!!!!!!!!!!!!!!!!!1  IN STOCK PRODUCTS ");
 
         System.out.println(inStockProducts.toString());
         System.out.println();
@@ -140,37 +141,39 @@ public class RetailService {
 
 
 
+        // trying to use the circuit beraker methods here
+        List<LevelUp> tempLevelUpList = levelUpPoints(customer.getId());
 
-        // create LevelUpInfo object
-        LevelUpInfo levelUpInfo = createLevelUp(customer.getId(), singleInvoice.getOrderTotalPrice() );
         System.out.println();
         System.out.println();
-        System.out.println("!!!!!!!!!!!!!!!! CREATING LEVELUPINFO OBJECT  ");
-        System.out.println(levelUpInfo.toString());
-        System.out.println();
-        System.out.println();
+        System.out.println(" @@@@@  this is the level up list ");
+        System.out.println(tempLevelUpList.toString());
+
+
+
+
+
+//        // create LevelUpInfo object
+//        LevelUpInfo levelUpInfo = createLevelUp(customer.getId(), singleInvoice.getOrderTotalPrice() );
+//        System.out.println();
+//        System.out.println();
+//        System.out.println("!!!!!!!!!!!!!!!! CREATING LEVELUPINFO OBJECT  ");
+//        System.out.println(levelUpInfo.toString());
+//        System.out.println();
+//        System.out.println();
 
 
 
         // create OrderResponseView object
-        return createResponseView(singleInvoice, customer, levelUpInfo );
+//        return createResponseView(singleInvoice, customer, levelUpInfo );
+        return null;
     }
 
 
     // Helper Methods
 
 
-    public List<LevelUp> getLevelUpPoints(int customerId) {
-        LevelUp levelUp = new LevelUp();
-        levelUp.setCustomerId(customerId);
-        levelUp.setPoints(0);
-        levelUp.setMemberDate(LocalDate.now());
-        List<LevelUp> returnList = new ArrayList<>();
-        returnList.add(levelUp);
 
-//        return levelUpServiceClient.getLevelUpByCustomer(customerId);
-        return returnList;
-    }
 
 
     public OrderResponseView createResponseView(SingleInvoice singleInvoice, Customer customer, LevelUpInfo levelUpInfo) {
@@ -186,7 +189,34 @@ public class RetailService {
 
 
 
+    @HystrixCommand(fallbackMethod = "getLevelUpPointsWithOutService")
+    public List<LevelUp> levelUpPoints(int id) {
 
+        return levelUpServiceClient.getLevelUpByCustomer(id);
+    }
+
+    public List<LevelUp> getLevelUpPointsWithOutService(int id) {
+
+        System.out.println("$$$$$$$$$$$  is this being called ???????????");
+
+        LevelUp levelUp = new LevelUp();
+        levelUp.setCustomerId(id);
+        levelUp.setPoints(0);
+        levelUp.setMemberDate(LocalDate.now());
+
+        List<LevelUp> levelUpList = new ArrayList<>();
+        levelUpList.add(levelUp);
+
+        return levelUpList;
+
+    }
+
+
+
+
+
+
+    @HystrixCommand(fallbackMethod = "getLevelUpPoints")
     public LevelUpInfo createLevelUp(int customerId, BigDecimal totalPrice) {
 
         // Calculate the current level up points from the current order
@@ -221,6 +251,33 @@ public class RetailService {
         currentLevelUp.setMemberDate(LocalDate.now());
 
         levelUpServiceClient.createLevelUp(currentLevelUp);
+
+        return levelUpInfo;
+    }
+
+
+    public LevelUpInfo getLevelUpPoints(int customerId, BigDecimal totalPrice) {
+
+        // Calculate the current level up points from the current order
+        int factor = BigDecimal.valueOf(totalPrice.longValue())
+                .divide(BigDecimal.valueOf(50)).intValue();
+        // use this int to calculate the total points
+        int newPoints = factor * 10;
+
+        // send the points for this order to Levelup-Service
+        // this will use the levelup-que
+        LevelUp currentLevelUp = new LevelUp();
+        currentLevelUp.setPoints(newPoints);
+        currentLevelUp.setCustomerId(customerId);
+        currentLevelUp.setMemberDate(LocalDate.now());
+
+//        levelUpServiceClient.createLevelUp(currentLevelUp);
+
+        // Create a LevelUpInfo object that will be returned
+        LevelUpInfo levelUpInfo = new LevelUpInfo();
+        // add the current points to the return object
+        levelUpInfo.setCurrentOrderPoints(newPoints);
+        levelUpInfo.setTotalPoints(newPoints);
 
         return levelUpInfo;
     }
@@ -369,6 +426,13 @@ public class RetailService {
     public List<InStockProducts> checkIfInStock(List<InputItem> itemList) {
         // loop the list of products to see if they are in stock
         // if they are available put them in a temp list
+
+        System.out.println();
+        System.out.println();
+        System.out.println("!!!!!!!!!!!!!!  THIS IS THE ITEM LIST TO CHECK INVENTORY ON");
+        System.out.println(itemList.toString());
+
+
 
         List<InStockProducts> inStockProducts = new ArrayList<>();
 
