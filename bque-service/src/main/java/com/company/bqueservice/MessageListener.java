@@ -28,3 +28,8 @@ public class MessageListener {
     }
 
 }
+
+
+//    public static final String  TOPIC_EXCHANGE_NAME= "level-up-exchange";
+//    public static final String QUEUE_NAME="level-up-queue";
+//    public static final String ROUTING_KEY="level.#";
