@@ -35,11 +35,14 @@ public class RetailService {
     }
 
 
+
+
 //    @HystrixCommand(fallbackMethod = "getLevelUpPoints")
 //    public List<LevelUp> levelUpPoints(int id) {
 //
 //        return levelUpServiceClient.getLevelUpByCustomer(id);
 //    }
+
 
 
     // Service Layer public methods:
@@ -54,6 +57,51 @@ public class RetailService {
 
         return productServiceClient.getAllProducts();
     }
+
+//    public OrderViewModel makeOrder(OrderViewModel model) throws Exception {
+//        OrderViewModel orderViewModel = new OrderViewModel();
+////        orderViewModel.setInvoiceId(model.getInvoiceId());
+////        orderViewModel.setProductId(model.getProductId());
+////        orderViewModel.setProducts(model.getProducts());
+////
+//        Customer customer = checkCustomer(model.getCustomer());
+//        customerServiceClient.createCustomer(customer);
+//
+//        InvoiceViewModel invoice = invoiceServiceClient.getInvoiceById(model.getInvoiceId());
+//        List<ProductOrder> products = model.getProducts();
+//        Inventory inventory = inventoryServiceClient.getInventoryByProductId(model.getProductId());
+////        if (inventoryServiceClient.getQuantity(model.getProduct().getId()) > 0 )
+//        BigDecimal total = invoiceServiceClient.getTotal(model.getInvoiceId());
+//        Integer totalQuantity = invoiceServiceClient.getQuantity(model.getInvoiceId());
+//        BigDecimal newTotal = total.multiply(new BigDecimal(totalQuantity));
+//
+//
+//        List<LevelUp> levelUps = levelUpServiceClient.getLevelUpByCustomer(model.getCustomer().getId());
+//        Product product = productServiceClient.getProductById(model.getProductId());
+//        List<InvoiceViewModel> item = invoiceServiceClient.getItemByInvoice(model.getProductId());
+//        item.stream()
+//                .forEach(n -> {
+//                    n.setInvoice(invoiceServiceClient.getInvoiceById(model.getInvoiceId()));
+//                    invoiceServiceClient.createInvoice(n);
+//                );
+//
+//                        });
+////        product.getListPrice() *
+//        orderViewModel.setInvoiceId(invoice.getInvoice().getInvoiceId());
+////        model.setCustomer(customer);
+//        orderViewModel.setProducts(model.getProducts());
+////        model.setProducts(products);
+//        orderViewModel.setCustomer(model.getCustomer());
+//        orderViewModel.setTotal(newTotal);
+//        orderViewModel.se
+//        //setting total points by calling sum method to add all total points in database
+//        model.setTotalPoints(levelUpServiceClient.getTotalPoints(model.getCustomer().getId()));
+//        if (model.getQuantity() > 0 && model.getQuantity() <= inventoryServiceClient.getQuantity(model.getProduct().getId()))
+//            return model;
+//        else
+//            throw new Exception("Quantity must be greater than zero or your product isn't in stock ");
+//
+//    }
 
 
     public OrderResponseView createOrder(OrderRequestView orderRequestView) {
@@ -141,32 +189,29 @@ public class RetailService {
 
 
 
-        // trying to use the circuit beraker methods here
+        // trying to use the circuit breaker methods here
         List<LevelUp> tempLevelUpList = levelUpPoints(customer.getId());
+
 
         System.out.println();
         System.out.println();
         System.out.println(" @@@@@  this is the level up list ");
         System.out.println(tempLevelUpList.toString());
 
+        // create LevelUpInfo object
+        LevelUpInfo levelUpInfo = createLevelUp(customer.getId(), singleInvoice.getOrderTotalPrice(), tempLevelUpList );
+        System.out.println();
+        System.out.println();
+        System.out.println("!!!!!!!!!!!!!!!! CREATING LEVELUPINFO OBJECT  ");
+        System.out.println(levelUpInfo.toString());
+        System.out.println();
+        System.out.println();
 
 
 
-
-//        // create LevelUpInfo object
-//        LevelUpInfo levelUpInfo = createLevelUp(customer.getId(), singleInvoice.getOrderTotalPrice() );
-//        System.out.println();
-//        System.out.println();
-//        System.out.println("!!!!!!!!!!!!!!!! CREATING LEVELUPINFO OBJECT  ");
-//        System.out.println(levelUpInfo.toString());
-//        System.out.println();
-//        System.out.println();
-
-
-
-        // create OrderResponseView object
-//        return createResponseView(singleInvoice, customer, levelUpInfo );
-        return null;
+   //      create OrderResponseView object
+        return createResponseView(singleInvoice, customer, levelUpInfo );
+//       return null;
     }
 
 
@@ -189,35 +234,29 @@ public class RetailService {
 
 
 
-    @HystrixCommand(fallbackMethod = "getLevelUpPointsWithOutService")
+
     public List<LevelUp> levelUpPoints(int id) {
 
         return levelUpServiceClient.getLevelUpByCustomer(id);
     }
 
-    public List<LevelUp> getLevelUpPointsWithOutService(int id) {
-
-        System.out.println("$$$$$$$$$$$  is this being called ???????????");
-
-        LevelUp levelUp = new LevelUp();
-        levelUp.setCustomerId(id);
-        levelUp.setPoints(0);
-        levelUp.setMemberDate(LocalDate.now());
-
-        List<LevelUp> levelUpList = new ArrayList<>();
-        levelUpList.add(levelUp);
-
-        return levelUpList;
-
-    }
 
 
+    public LevelUpInfo createLevelUp(int customerId, BigDecimal totalPrice, List<LevelUp> leveluplist) {
 
+        // find the total from the leveluplist parameter
+        // loop the list and add up the existing points
+        int pointHistoryTotal = 0;
 
+        for ( LevelUp each: leveluplist ) {
+            pointHistoryTotal += each.getPoints();
+        }
 
+        System.out.println();
+        System.out.println(" this is the points total ");
+        System.out.println(pointHistoryTotal);
+        System.out.println();
 
-    @HystrixCommand(fallbackMethod = "getLevelUpPoints")
-    public LevelUpInfo createLevelUp(int customerId, BigDecimal totalPrice) {
 
         // Calculate the current level up points from the current order
         int factor = BigDecimal.valueOf(totalPrice.longValue())
@@ -225,32 +264,31 @@ public class RetailService {
         // use this int to calculate the total points
         int newPoints = factor * 10;
 
+
         // Create a LevelUpInfo object that will be returned
         LevelUpInfo levelUpInfo = new LevelUpInfo();
         // add the current points to the return object
         levelUpInfo.setCurrentOrderPoints(newPoints);
-
-        // this method will incorporate the circuit breaker
-        // it will return a list of LevelUp objects. It will atleast
-        // have a 0 index
-        List<LevelUp> leveluplist = levelUpServiceClient.getLevelUpByCustomer(customerId);
-        // loop the list and add up the existing points
-        int pointHistoryTotal = 0;
-
-        for ( LevelUp each: leveluplist ) {
-            pointHistoryTotal += each.getPoints();
-        }
         // set the total history point to the return object
         levelUpInfo.setTotalPoints(pointHistoryTotal + newPoints);
 
-        // send the points for this order to Levelup-Service
-        // this will use the levelup-que
-        LevelUp currentLevelUp = new LevelUp();
-        currentLevelUp.setPoints(newPoints);
-        currentLevelUp.setCustomerId(customerId);
-        currentLevelUp.setMemberDate(LocalDate.now());
 
-        levelUpServiceClient.createLevelUp(currentLevelUp);
+        System.out.println();
+        System.out.println(   "see shat is here for level up    "     );
+        System.out.println();
+        System.out.println(levelUpInfo.toString());
+
+
+
+
+//        // send the points for this order to Levelup-Service
+//        // this will use the levelup-que
+//        LevelUp currentLevelUp = new LevelUp();
+//        currentLevelUp.setPoints(newPoints);
+//        currentLevelUp.setCustomerId(customerId);
+//        currentLevelUp.setMemberDate(LocalDate.now());
+//
+//        levelUpServiceClient.createLevelUp(currentLevelUp);
 
         return levelUpInfo;
     }
@@ -491,7 +529,7 @@ public class RetailService {
 
     public Customer checkCustomer(Customer customer) {
 
-        if (customer.getId() < 0) {
+        if (customer.getId() <= 0) {
             // create a new Customer
             System.out.println("CREATING A NEW CUSTOMER OBJECT FROM CUSTOMER-SERVICE");
             customer = customerServiceClient.createCustomer(customer);

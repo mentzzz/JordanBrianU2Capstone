@@ -21,6 +21,10 @@ public class LevelUpService {
         this.dao = dao;
     }
 
+    public int getTotalPoints(int customerId) {
+        return dao.getTotalLevelUpPointsByCustomerId(customerId);
+    }
+
     @Transactional
     public LevelUp saveLevelUp(LevelUp levelUp) {
         return dao.addLevelUp(levelUp);
