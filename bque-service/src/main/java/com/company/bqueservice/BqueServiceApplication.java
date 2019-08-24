@@ -1,4 +1,4 @@
-package com.company.levelupqueue;
+package com.company.bqueservice;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -8,24 +8,25 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@EnableFeignClients
 @EnableDiscoveryClient
-public class LevelUpQueueApplication {
+@EnableFeignClients
+public class BqueServiceApplication {
+
 	public static final String  TOPIC_EXCHANGE_NAME= "level-up-exchange";
 	public static final String QUEUE_NAME="level-up-queue";
 	public static final String ROUTING_KEY="level.#";
 
 	@Bean
-	Queue queue(){
-		return new Queue(QUEUE_NAME,false);
+	Queue queue() {
+		return new Queue(QUEUE_NAME, false);
 	}
 
 	@Bean
-	TopicExchange exchange(){
+	TopicExchange exchange() {
 		return new TopicExchange(TOPIC_EXCHANGE_NAME);
 	}
 
@@ -35,12 +36,12 @@ public class LevelUpQueueApplication {
 	}
 
 	@Bean
-	public Jackson2JsonMessageConverter jackson2JsonMessageConverter(){
+	public Jackson2JsonMessageConverter jackson2JsonMessageConverter() {
 		return new Jackson2JsonMessageConverter();
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(LevelUpQueueApplication.class, args);
+		SpringApplication.run(BqueServiceApplication.class, args);
 	}
 
 }

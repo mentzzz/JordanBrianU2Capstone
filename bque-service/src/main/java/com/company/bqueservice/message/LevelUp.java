@@ -1,4 +1,4 @@
-package com.company.levelupqueue.model;
+package com.company.bqueservice.message;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class LevelUp {
+
     private int id;
     private int customerId;
     private int points;
@@ -17,6 +18,8 @@ public class LevelUp {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = ToStringSerializer.class)
     private LocalDate memberDate;
+
+    // getters / setters
 
     public int getId() {
         return id;
@@ -50,6 +53,8 @@ public class LevelUp {
         this.memberDate = memberDate;
     }
 
+    // equals / hash
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -64,5 +69,18 @@ public class LevelUp {
     @Override
     public int hashCode() {
         return Objects.hash(id, customerId, points, memberDate);
+    }
+
+    // to string
+
+
+    @Override
+    public String toString() {
+        return "LevelUp{" +
+                "id=" + id +
+                ", customerId=" + customerId +
+                ", points=" + points +
+                ", memberDate=" + memberDate +
+                '}';
     }
 }
