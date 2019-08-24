@@ -1,5 +1,11 @@
 package com.company.levelupqueue.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -7,6 +13,9 @@ public class LevelUp {
     private int id;
     private int customerId;
     private int points;
+    // handles "yyyy-MM-dd" input just fine (note: "yyyy-M-d" format will not work)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = ToStringSerializer.class)
     private LocalDate memberDate;
 
     public int getId() {

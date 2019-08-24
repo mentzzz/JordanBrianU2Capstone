@@ -1,5 +1,10 @@
 package com.company.levelupservice.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -15,6 +20,9 @@ public class LevelUp {
     @Min(0)
     private int points;
     @NotNull
+    @JsonSerialize(using = LocalDateSerializer.class)
+    // handles "yyyy-MM-dd" input just fine (note: "yyyy-M-d" format will not work)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate memberDate;
 
     public int getId() {

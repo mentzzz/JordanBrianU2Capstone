@@ -2,6 +2,7 @@ package com.company.retailservice.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ public class LevelUp implements Serializable {
     private int customerId;
     private int points;
     @JsonDeserialize
-    @JsonSerialize
+    @JsonSerialize(using = ToStringSerializer.class)
     private LocalDate memberDate;
 
     public LevelUp() {
