@@ -1,7 +1,7 @@
 package com.company.levelupqueue.util.feign;
 
 import com.company.levelupqueue.model.LevelUp;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

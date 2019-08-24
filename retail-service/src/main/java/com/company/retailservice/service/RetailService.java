@@ -762,6 +762,10 @@ public class RetailService {
 //        return returnList;
 //    }
 
+    public BigDecimal getTotalPriceByInvoice(int invoiceId) {
+      return invoiceServiceClient.getTotal(invoiceId).multiply(new BigDecimal(invoiceServiceClient.getQuantity(invoiceId)));
+    }
+
 
 
 

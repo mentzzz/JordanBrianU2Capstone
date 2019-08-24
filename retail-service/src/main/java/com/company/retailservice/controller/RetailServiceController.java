@@ -2,6 +2,7 @@ package com.company.retailservice.controller;
 
 import com.company.retailservice.dto.*;
 import com.company.retailservice.service.RetailService;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,18 @@ public class RetailServiceController {
 
     @Autowired
     private RetailService service;
+
+    public static final String EXCHANGE = "note-exchange";
+    public static final String ROUTING_KEY = "note.#";
+    public static final String SAVE_QUEUED_MSG = "Note(s) queued for save";
+    public static final String UPDATE_QUEUED_MSG = "Note(s) queued for update";
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    public RetailServiceController(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
 
 
 
