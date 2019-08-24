@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableCircuitBreaker
 public class LevelUpServiceApplication {
 
 	public static void main(String[] args) {
