@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -82,6 +83,24 @@ public class InvoiceController {
             throw new IllegalArgumentException("Invoice Item ID on path must match the ID in the invoice item object");
         }
         service.updateInvoiceItem(invoiceItem);
+    }
+
+    @GetMapping("/invoiceitems/{invoiceid}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<InvoiceItem> getItemByInvoice(@PathVariable("invoiceid") int invoiceId) {
+        return service.getItemByInvoice(invoiceId);
+    }
+
+    @GetMapping("/invoiceitems/total/{invoiceid}")
+    @ResponseStatus(HttpStatus.OK)
+    public BigDecimal getTotal(@PathVariable("{invoiceid}") int invoiceId) {
+        return service.getTotalByInvoice(invoiceId);
+    }
+
+    @GetMapping("/invoiceitems/total/{invoiceid}")
+    @ResponseStatus(HttpStatus.OK)
+    public int getQuantity(@PathVariable("{invoiceid}") int invoiceId) {
+        return service.getTotalQuantity(invoiceId);
     }
 
     @DeleteMapping(value = "/invoiceitems/{id}")

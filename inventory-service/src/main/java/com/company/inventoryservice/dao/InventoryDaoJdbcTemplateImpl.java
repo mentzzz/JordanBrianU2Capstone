@@ -35,6 +35,9 @@ public class InventoryDaoJdbcTemplateImpl implements InventoryDao {
     private static final String DELETE_INVENTORY =
             "delete from inventory where inventory_id = ?";
 
+    private static final String SELECT_TOTAL_QUANTITY_FROM_INVENTORY_BY_PRODUCT =
+            "select sum(quantity) from inventory where product_id = ?";
+
 
     @Autowired
     public InventoryDaoJdbcTemplateImpl(JdbcTemplate jdbcTemplate) {
@@ -90,6 +93,13 @@ public class InventoryDaoJdbcTemplateImpl implements InventoryDao {
     @Override
     public void deleteInventory(int id) {
         jdbcTemplate.update(DELETE_INVENTORY, id);
+    }
+
+    @Override
+    public int getQuantityByProduct(int productId) {
+        int quantity = jdbcTemplate.queryForObject(SELECT_TOTAL_QUANTITY_FROM_INVENTORY_BY_PRODUCT, Integer.class, productId);
+
+        return quantity;
     }
 
     private Inventory mapRowToInventory(ResultSet rs, int rowNum) throws SQLException {

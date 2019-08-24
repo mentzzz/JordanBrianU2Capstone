@@ -5,10 +5,8 @@ import com.company.retailservice.dto.Invoice;
 import com.company.retailservice.dto.InvoiceItem;
 import com.company.retailservice.dto.Product;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +27,10 @@ public interface InventoryServiceClient {
 
     @RequestMapping(value = "/inventory/{id}", method = RequestMethod.DELETE)
     public void deleteInventory(@PathVariable int id);
+
+    @GetMapping("/inventory/quantity/{productid}")
+    @ResponseStatus(HttpStatus.OK)
+    public int getQuantity(@PathVariable("productid") int productId);
 
 
 
