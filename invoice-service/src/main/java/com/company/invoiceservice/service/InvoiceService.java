@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,18 @@ public class InvoiceService {
     public InvoiceService(InvoiceDao invoiceDao, InvoiceItemDao invoiceItemDao) {
         this.invoiceDao = invoiceDao;
         this.invoiceItemDao = invoiceItemDao;
+    }
+
+    public int getTotalQuantity(int invoiceId) {
+        return invoiceItemDao.totalQuantityByInvoice(invoiceId);
+    }
+
+    public List<InvoiceItem> getItemByInvoice(int invoiceId) {
+        return invoiceItemDao.getInvoiceItemsByInvoiceId(invoiceId);
+    }
+
+    public BigDecimal getTotalByInvoice(int invoiceId) {
+        return invoiceItemDao.totalPriceItems(invoiceId);
     }
 
     @Transactional

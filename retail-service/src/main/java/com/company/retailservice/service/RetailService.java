@@ -40,6 +40,14 @@ public class RetailService {
 //
 //        return levelUpServiceClient.getLevelUpByCustomer(id);
 //    }
+=======
+
+//     @HystrixCommand(fallbackMethod = "getLevelUpPoints")
+//     public List<LevelUp> levelUpPoints(int id) {
+// 
+//         return levelUpServiceClient.getLevelUpByCustomer(id);
+//     }
+
 
 
     // Service Layer public methods:
@@ -54,6 +62,51 @@ public class RetailService {
 
         return productServiceClient.getAllProducts();
     }
+
+//    public OrderViewModel makeOrder(OrderViewModel model) throws Exception {
+//        OrderViewModel orderViewModel = new OrderViewModel();
+////        orderViewModel.setInvoiceId(model.getInvoiceId());
+////        orderViewModel.setProductId(model.getProductId());
+////        orderViewModel.setProducts(model.getProducts());
+////
+//        Customer customer = checkCustomer(model.getCustomer());
+//        customerServiceClient.createCustomer(customer);
+//
+//        InvoiceViewModel invoice = invoiceServiceClient.getInvoiceById(model.getInvoiceId());
+//        List<ProductOrder> products = model.getProducts();
+//        Inventory inventory = inventoryServiceClient.getInventoryByProductId(model.getProductId());
+////        if (inventoryServiceClient.getQuantity(model.getProduct().getId()) > 0 )
+//        BigDecimal total = invoiceServiceClient.getTotal(model.getInvoiceId());
+//        Integer totalQuantity = invoiceServiceClient.getQuantity(model.getInvoiceId());
+//        BigDecimal newTotal = total.multiply(new BigDecimal(totalQuantity));
+//
+//
+//        List<LevelUp> levelUps = levelUpServiceClient.getLevelUpByCustomer(model.getCustomer().getId());
+//        Product product = productServiceClient.getProductById(model.getProductId());
+//        List<InvoiceViewModel> item = invoiceServiceClient.getItemByInvoice(model.getProductId());
+//        item.stream()
+//                .forEach(n -> {
+//                    n.setInvoice(invoiceServiceClient.getInvoiceById(model.getInvoiceId()));
+//                    invoiceServiceClient.createInvoice(n);
+//                );
+//
+//                        });
+////        product.getListPrice() *
+//        orderViewModel.setInvoiceId(invoice.getInvoice().getInvoiceId());
+////        model.setCustomer(customer);
+//        orderViewModel.setProducts(model.getProducts());
+////        model.setProducts(products);
+//        orderViewModel.setCustomer(model.getCustomer());
+//        orderViewModel.setTotal(newTotal);
+//        orderViewModel.se
+//        //setting total points by calling sum method to add all total points in database
+//        model.setTotalPoints(levelUpServiceClient.getTotalPoints(model.getCustomer().getId()));
+//        if (model.getQuantity() > 0 && model.getQuantity() <= inventoryServiceClient.getQuantity(model.getProduct().getId()))
+//            return model;
+//        else
+//            throw new Exception("Quantity must be greater than zero or your product isn't in stock ");
+//
+//    }
 
 
     public OrderResponseView createOrder(OrderRequestView orderRequestView) {
@@ -491,7 +544,7 @@ public class RetailService {
 
     public Customer checkCustomer(Customer customer) {
 
-        if (customer.getId() < 0) {
+        if (customer.getId() <= 0) {
             // create a new Customer
             System.out.println("CREATING A NEW CUSTOMER OBJECT FROM CUSTOMER-SERVICE");
             customer = customerServiceClient.createCustomer(customer);

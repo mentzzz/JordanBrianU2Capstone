@@ -26,6 +26,12 @@ public class LevelUpController {
     @Autowired
     LevelUpService service;
 
+    @GetMapping("/points/{customerid}")
+    @ResponseStatus(HttpStatus.OK)
+    public int getTotalPoints(@PathVariable("customerid") int customerId) {
+        return service.getTotalPoints(customerId);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public LevelUp createLevelUp(@RequestBody LevelUp levelUp) {
