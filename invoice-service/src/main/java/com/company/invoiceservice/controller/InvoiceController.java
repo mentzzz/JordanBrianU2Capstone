@@ -24,8 +24,8 @@ public class InvoiceController {
     public InvoiceViewModel createInvoice(@RequestBody InvoiceViewModel invoiceViewModel) {
 
         System.out.println("!!!!!!!");
-        System.out.println(invoiceViewModel.getInvoice().toString());
-        System.out.println(invoiceViewModel.getInvoiceItems().toString());
+//        System.out.println(invoiceViewModel.getInvoice().toString());
+//        System.out.println(invoiceViewModel.getInvoiceItems().toString());
 
 
 

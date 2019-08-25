@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dc002a3-5708-43de-ae05-ac39c075e337" name="Default Changelist" comment="" />
+    <list default="true" id="6dc002a3-5708-43de-ae05-ac39c075e337" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/levelupqueue/util/feign/LevelUpClient.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
