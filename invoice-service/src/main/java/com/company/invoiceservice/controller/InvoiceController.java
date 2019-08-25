@@ -22,13 +22,6 @@ public class InvoiceController {
 
     @PostMapping
     public InvoiceViewModel createInvoice(@RequestBody InvoiceViewModel invoiceViewModel) {
-
-        System.out.println("!!!!!!!");
-//        System.out.println(invoiceViewModel.getInvoice().toString());
-//        System.out.println(invoiceViewModel.getInvoiceItems().toString());
-
-
-
         return service.saveInvoice(invoiceViewModel);
     }
 
