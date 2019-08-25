@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dc002a3-5708-43de-ae05-ac39c075e337" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../retail-service/src/test/java/com/company/retailservice/service/RetailServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/service/NewRetailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/src/main/java/com/company/bqueservice/BqueServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/src/main/java/com/company/bqueservice/MessageListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/src/main/java/com/company/bqueservice/feign/LevelUpServiceClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/src/main/java/com/company/bqueservice/message/LevelUp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/src/main/resources/bootstrap.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/src/test/java/com/company/bqueservice/BqueServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bque-service/src/test/java/com/company/bqueservice/LevelEntryQueueApplicationTests.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
