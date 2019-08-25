@@ -304,9 +304,9 @@ public class RetailService {
         currentLevelUp.setCustomerId(customerId);
         currentLevelUp.setMemberDate(LocalDate.now());
 
-        levelUpQue.createLevelUp(currentLevelUp);
+//        levelUpQue.createLevelUp(currentLevelUp);
 
-//        levelUpServiceClient.createLevelUp(currentLevelUp);
+     levelUpServiceClient.createLevelUp(currentLevelUp);
 
         return levelUpInfo;
     }
