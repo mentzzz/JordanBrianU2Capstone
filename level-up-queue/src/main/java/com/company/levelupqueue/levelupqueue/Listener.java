@@ -1,14 +1,16 @@
-//package com.company.levelupqueue;
+//package com.company.levelupqueue.levelupqueue;//package com.company.levelupqueue;
+//
 //
 //import com.company.levelupqueue.model.LevelUp;
 //import com.company.levelupqueue.util.feign.Payload.Payload;
 //import com.company.levelupqueue.util.feign.PointsClient;
 //import org.springframework.amqp.rabbit.annotation.RabbitListener;
 //import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Component;
 //import org.springframework.stereotype.Service;
 //
 //@Service
-////@Component
+//@Component
 //public class Listener {
 //
 //    @Autowired
