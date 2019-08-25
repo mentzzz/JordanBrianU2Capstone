@@ -14,9 +14,9 @@ public class CustomerServiceLayer {
     private CustomerServiceClient customerServiceClient;
 
 
-//    public CustomerServiceLayer(CustomerServiceClient customerServiceClient) {
-//        this.customerServiceClient = customerServiceClient;
-//    }
+    public CustomerServiceLayer(CustomerServiceClient customerServiceClient) {
+        this.customerServiceClient = customerServiceClient;
+    }
 
 
 
