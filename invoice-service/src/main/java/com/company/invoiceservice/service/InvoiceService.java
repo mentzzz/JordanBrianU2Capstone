@@ -68,8 +68,6 @@ public class InvoiceService {
         invoice.setCustomerId(invoiceViewModel.getInvoice().getCustomerId());
         invoice.setPurchaseDate(invoiceViewModel.getInvoice().getPurchaseDate());
 
-        System.out.println("!!!!!!!!!!!!!");
-        System.out.println(invoice.toString());
 
         invoice = invoiceDao.addInvoice(invoice);
         invoiceViewModel.setInvoice(invoice);
