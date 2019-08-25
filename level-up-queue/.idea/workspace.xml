@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dc002a3-5708-43de-ae05-ac39c075e337" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../admin-service/src/test/java/com/company/adminservice/service/CustomerServiceLayerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../admin-service/src/test/java/com/company/adminservice/service/InventoryServiceLayerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../admin-service/src/test/java/com/company/adminservice/service/InvoiceServiceLayerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../admin-service/src/test/java/com/company/adminservice/service/LevelUpServiceLayerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../admin-service/src/test/java/com/company/adminservice/service/ProductServiceLayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-service/src/main/java/com/company/adminservice/dto/InvoiceViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-service/src/main/java/com/company/adminservice/dto/InvoiceViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../admin-service/src/main/java/com/company/adminservice/service/CustomerServiceLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-service/src/main/java/com/company/adminservice/service/CustomerServiceLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../customer-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../customer-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../inventory-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../invoice-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../invoice-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../level-up-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../level-up-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../product-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../product-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/service/RetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../retail-service/src/main/java/com/company/retailservice/service/RetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoice-service/src/main/java/com/company/invoiceservice/controller/InvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoice-service/src/main/java/com/company/invoiceservice/controller/InvoiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../invoice-service/src/test/java/com/company/invoiceservice/service/InvoiceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../invoice-service/src/test/java/com/company/invoiceservice/service/InvoiceServiceTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -127,6 +115,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="497" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />

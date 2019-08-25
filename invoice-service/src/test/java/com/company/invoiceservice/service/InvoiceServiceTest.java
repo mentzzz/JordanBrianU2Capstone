@@ -38,30 +38,26 @@ public class InvoiceServiceTest {
         invoiceDao = mock(InvoiceDaoJdbcTemplateImpl.class);
 
         Invoice invoice = new Invoice();
-        invoice.setInvoiceId(1);
         invoice.setCustomerId(1);
         invoice.setPurchaseDate(LocalDate.of(2022, 12, 12));
 
         Invoice invoice1 = new Invoice();
-//        invoice1.setInvoiceId(1);
+        invoice1.setInvoiceId(1);
         invoice1.setCustomerId(1);
         invoice1.setPurchaseDate(LocalDate.of(2022, 12, 12));
 
         List<Invoice> invoices = new ArrayList<>();
-        invoices.add(invoice);
+        invoices.add(invoice1);
 
-        doReturn(invoice).when(invoiceDao).addInvoice(invoice1);
+        doReturn(invoice1).when(invoiceDao).addInvoice(invoice);
         doReturn(invoices).when(invoiceDao).getAllInvoices();
-        doReturn(invoice).when(invoiceDao).getInvoiceById(1);
+        doReturn(invoice1).when(invoiceDao).getInvoiceById(1);
     }
 
     private void setUpInvoiceItemDaoMock() {
         invoiceItemDao = mock(InvoiceItemDaoJdbcTemplateImpl.class);
 
         InvoiceItem invoiceItem = new InvoiceItem();
-        invoiceItem.setId(1);
-        invoiceItem.setInvoiceId(1);
-        invoiceItem.setInventoryId(1);
         invoiceItem.setQuantity(1);
         invoiceItem.setUnitPrice(new BigDecimal(200.00).setScale(2));
 
@@ -72,42 +68,64 @@ public class InvoiceServiceTest {
         invoiceItem1.setUnitPrice(new BigDecimal(200.00).setScale(2));
 
         List<InvoiceItem> invoiceItems = new ArrayList<>();
-        invoiceItems.add(invoiceItem);
+        invoiceItems.add(invoiceItem1);
 
-        doReturn(invoiceItem).when(invoiceItemDao).addInvoiceItem(invoiceItem1);
-        doReturn(invoiceItem).when(invoiceItemDao).getInvoiceItemById(1);
+        doReturn(invoiceItem1).when(invoiceItemDao).addInvoiceItem(invoiceItem);
+        doReturn(invoiceItem1).when(invoiceItemDao).getInvoiceItemById(1);
         doReturn(invoiceItems).when(invoiceItemDao).getAllInvoiceItems();
     }
 
-//    @Test
-//    public void saveFindFindAllInvoice() {
-//        InvoiceViewModel ivm = new InvoiceViewModel();
-//
-//        List<Invoice> invoices = new ArrayList<>();
-//        ivm.setInvoiceId(1);
-//        ivm.setCustomerId(1);
-//        ivm.setPurchaseDate(LocalDate.of(2022, 12, 12));
-//
-//        InvoiceItem invoiceItem = new InvoiceItem();
-//        invoiceItem.setInvoiceId(1);
-//        invoiceItem.setInventoryId(1);
-//        invoiceItem.setQuantity(1);
-//        invoiceItem.setUnitPrice(new BigDecimal(200.00).setScale(2));
-//        invoiceItem = service.saveInvoiceItem(invoiceItem);
-//        List<InvoiceItem> invoiceItems = new ArrayList<>();
-//        invoiceItems.add(invoiceItem);
-//
-//        ivm.setInvoiceItems(invoiceItems);
-//        ivm = service.saveInvoice(ivm);
-//
-//        InvoiceViewModel fromService = service.findInvoice(ivm.getInvoiceId());
-//        assertEquals(ivm, fromService);
-//        List<InvoiceViewModel> fromList = service.getAllInvoices();
-//        assertEquals(fromList.size(), 1);
-//
-//
-//
-//    }
+    @Test
+    public void saveFindFindAllInvoice() {
+        InvoiceViewModel toService = new InvoiceViewModel();
+
+        Invoice invoice = new Invoice();
+        invoice.setCustomerId(1);
+        invoice.setPurchaseDate(LocalDate.of(2022, 12, 12));
+
+        InvoiceItem invoiceItem = new InvoiceItem();
+        invoiceItem.setQuantity(1);
+        invoiceItem.setUnitPrice(new BigDecimal(200.00).setScale(2));
+
+        List<InvoiceItem> itemList = new ArrayList<>();
+        itemList.add(invoiceItem);
+
+        toService.setInvoice(invoice);
+        toService.setInvoiceItems(itemList);
+
+        InvoiceViewModel fromService = new InvoiceViewModel();
+
+        Invoice invoice1 = new Invoice();
+        invoice1.setInvoiceId(1);
+        invoice1.setCustomerId(1);
+        invoice1.setPurchaseDate(LocalDate.of(2022, 12, 12));
+
+        InvoiceItem invoiceItem1 = new InvoiceItem();
+        invoiceItem1.setInvoiceId(1);
+        invoiceItem1.setInventoryId(1);
+        invoiceItem1.setQuantity(1);
+        invoiceItem1.setUnitPrice(new BigDecimal(200.00).setScale(2));
+
+        List<InvoiceItem> itemList1 = new ArrayList<>();
+        itemList1.add(invoiceItem1);
+
+        fromService.setInvoice(invoice1);
+        fromService.setInvoiceItems(itemList1);
+
+        List<InvoiceViewModel> listOfInventories = new ArrayList<>();
+        listOfInventories.add(fromService);
+
+
+
+        toService = service.saveInvoice(toService);
+        InvoiceViewModel answer = service.findInvoice(toService.getInvoice().getInvoiceId());
+
+        assertEquals(toService, answer);
+
+        List<InvoiceViewModel> list = service.getAllInvoices();
+        assertEquals(1, list.size());
+
+    }
 
 
 }
