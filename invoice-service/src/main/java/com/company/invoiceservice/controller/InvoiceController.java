@@ -8,6 +8,11 @@ import com.company.invoiceservice.model.InvoiceItem;
 import com.company.invoiceservice.service.InvoiceService;
 import com.company.invoiceservice.viewmodel.InvoiceViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,15 +21,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/invoices")
+@RefreshScope
+@CacheConfig(cacheNames = "invoices")
 public class InvoiceController {
     @Autowired
     InvoiceService service;
 
+    @CachePut(key = "#invoices.getId()")
     @PostMapping
     public InvoiceViewModel createInvoice(@RequestBody InvoiceViewModel invoiceViewModel) {
         return service.saveInvoice(invoiceViewModel);
     }
 
+    @Cacheable
     @GetMapping(value = "/id/{id}")
     public InvoiceViewModel getInvoice(@PathVariable int id) {
         InvoiceViewModel invoiceViewModel = service.findInvoice(id);
@@ -39,12 +48,14 @@ public class InvoiceController {
         return service.getAllInvoices();
     }
 
+    @CacheEvict
     @DeleteMapping("/id/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteInvoice(@PathVariable int id) {
         service.removeInvoice(id);
     }
 
+    @CacheEvict(key = "#invoices.getId()")
     @PutMapping(value = "/id/{id}")
     public void updateInvoice(@RequestBody InvoiceViewModel invoice, @PathVariable int id) {
 //        if (id != invoice.getInvoiceId()) {
