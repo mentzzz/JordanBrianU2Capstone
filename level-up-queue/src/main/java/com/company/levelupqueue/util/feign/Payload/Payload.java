@@ -1,4 +1,12 @@
-package com.company.levelupqueue.levelupqueue.util.feign.Payload;
+package com.company.levelupqueue.util.feign.Payload;
+
+import com.company.levelupqueue.model.LevelUp;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ArraySerializerBase;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -7,6 +15,9 @@ public class Payload {
     private int id;
     private int customerId;
     private int points;
+    @JsonSerialize(using = LocalDateSerializer.class)
+    // handles "yyyy-MM-dd" input just fine (note: "yyyy-M-d" format will not work)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate memberDate;
 
     public Payload(int id, int customerId, int points, LocalDate memberDate) {
